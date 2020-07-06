@@ -1,0 +1,135 @@
+
+<local-header></local-header>
+
+<div class="main-petowner">
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-lg-6 left ">
+                <div class="box">
+                    <div class="row">Welcome to</div>
+                    
+                    <div class="row">
+                        <span class="heading">Petopus</span>
+                    </div>
+                    
+                    <div class="row">
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicab
+                        </p>
+                    </div>
+                </div>
+
+                <img src="assets/images//register-petOwner/reg-pet-owner1.png">
+            </div>
+
+            <div class="col-lg-6 right-professional ">
+                <div class="row top justify-content-center align-items-center toggle-button-section">
+                    <div class="button"><a (click)="ToggleRegistrationType('owner')" class="guest guest-button hover-class" [ngClass]="{'active': owner_registration}">Pet Owner / Guest</a></div>
+                    <div class="button"><a (click)="ToggleRegistrationType('professional')" class="profesionl professional-button hover-class" [ngClass]="{'active': !owner_registration}"> Professional</a></div>
+                </div>
+       
+                <div class="div-center form-inline justify-content-center">
+
+                    <div class="content" *ngIf="!owner_registration">
+                        <div class="row"></div>
+                        <div class="heading">Register as Professional</div>
+                        
+                        <br>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Full Name:</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Full Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Your Email:</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Your Password:</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="container mobile-font checkbox-container">I accept privacy, Terms &amp; Conditions of use
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Complete Registration</button>
+                        </form>
+                    </div>
+
+                    <div class="content" *ngIf="owner_registration">
+                        <div class="row"></div>
+                        <div class="heading">Register as Owner / Guest</div>
+                        
+                        <br>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Full Name:</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Full Name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Your Email:</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Your Password:</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="exampleInputPassword1">Country:</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Canada</option>
+                                        <option>Australia</option>
+                                        <option>UK</option>
+                                        
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="exampleInputPassword1">Province State:</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Province State">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="exampleInputPassword1">City:</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>London</option>
+                                        <option>New york</option>
+                                        <option>Sudny</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="exampleInputPassword1">Postal Code:</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Postal Code">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="container checkbox-container">I accept privacy, Terms &amp; Conditions of use
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Complete Registration</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<local-footer></local-footer>

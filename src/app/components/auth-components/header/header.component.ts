@@ -18,7 +18,7 @@ export class HeaderComponent {
 
     ngOnInit() {
         this.nick_name = sessionStorage.getItem('nick_name');
-        this.owner_profile = (sessionStorage.getItem('role') == '1') ? false : true;
+        this.owner_profile = (sessionStorage.getItem('role') == '1') ? true : false;
     }
 }
   

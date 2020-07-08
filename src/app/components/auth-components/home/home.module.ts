@@ -8,6 +8,7 @@ import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
 import { FeedMenuComponent } from '../feed-menu/feed-menu.component';
 import { LeftMenuComponent } from '../left-menu/left-menu.component';
+import { AboutComponent } from './../about/about.component';
 import { RightMenuComponent } from '../right-menu/right-menu.component';
 
 // import { CreateEventComponent } from '../components/professional/professional-event/create-event/create-event.component';
@@ -55,6 +56,7 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         FeedMenuComponent,
         LeftMenuComponent,
         RightMenuComponent,
+        AboutComponent,
         // ServicesComponent,
         // CreateEventComponent,
         // ProfessionalEventComponent,

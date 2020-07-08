@@ -12,25 +12,18 @@
     </div>
 
     <div class="container">
-        <div class="nav" *ngIf="owner_profile">
-            <ul>
-                <li class="rounded-left"><a [routerLink]="[{ outlets: { center: ['profile'] } }]" routerLinkActive="active">Profile</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['newsFeed'] } }]" routerLinkActive="active">Feeds</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['services'] } }]" routerLinkActive="active">Services</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['events'] } }]" routerLinkActive="active">Events</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['petParks'] } }]" routerLinkActive="active">Parks</a></li>
-                <li style="width: 16%;"><a [routerLink]="[{ outlets: { center: ['petOwnerAnnounces'] } }]" routerLinkActive="active">Announces</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['nearby'] } }]" routerLinkActive="active">NearBy</a></li>
-                <li class="rounded-right"><a [routerLink]="[{ outlets: { center: ['alert'] } }]" routerLinkActive="active">Alerts</a></li>
-            </ul>
-        </div>
 
-        <div class="nav" *ngIf="!owner_profile">
+        <div class="nav">
             <ul>
-                <li class="rounded-left"><a [routerLink]="[{ outlets: { center: ['profile'] } }]" routerLinkActive="active">About</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['newsFeed'] } }]" routerLinkActive="active">Feeds</a></li>
-                <li><a [routerLink]="[{ outlets: { center: ['services'] } }]" routerLinkActive="active">Services</a></li>
-                <li class="rounded-right"><a [routerLink]="[{ outlets: { center: ['alert'] } }]" routerLinkActive="active">Alerts</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a>Profile</a></li>
+                <li class="rounded-left" *ngIf="!owner_profile"><a routerLink="home/about">About</a></li>
+                <li class="rounded-left"><a>Feeds</a></li>
+                <li class="rounded-left"><a>Services</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a>Events</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a>Parks</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a>Announces</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a>NearBy</a></li>
+                <li class="rounded-left"><a>Alerts</a></li>
             </ul>
         </div>
     </div>

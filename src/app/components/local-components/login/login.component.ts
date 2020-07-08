@@ -36,7 +36,7 @@ export class LoginComponent {
     CreateForm() {
         this.form = this.formBuilder.group({
             'email': ['', Validators.required],
-            'password': ['', Validators.required, Validators.minLength(6)],
+            'password': ['', Validators.required],
         })
     }
 
@@ -53,6 +53,7 @@ export class LoginComponent {
         this.loginService.DoLogin(login_information).subscribe((response) => {
             sessionStorage.setItem('user_id', response['user_id']);
             sessionStorage.setItem('token', response["authentication_token"]);
+            sessionStorage.setItem('nick_name', response["nickname"]);
             sessionStorage.setItem('role', (response["role_id"] == "Professional") ? '2' : '1');
 
             this.router.navigate(['/home']);

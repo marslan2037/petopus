@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from "@angular/common";
 
 import { HomeRoutes } from './home.routing';
 
 
 import { HomeComponent } from './home.component';
+import { HeaderComponent } from '../header/header.component';
+import { FeedMenuComponent } from '../feed-menu/feed-menu.component';
+import { LeftMenuComponent } from '../left-menu/left-menu.component';
+import { RightMenuComponent } from '../right-menu/right-menu.component';
 
 // import { CreateEventComponent } from '../components/professional/professional-event/create-event/create-event.component';
 // import { Article2Component } from '../components/professional/article2/article2.component';
@@ -47,6 +51,10 @@ import { HomeComponent } from './home.component';
 @NgModule({
     declarations: [
         HomeComponent,
+        HeaderComponent,
+        FeedMenuComponent,
+        LeftMenuComponent,
+        RightMenuComponent,
         // ServicesComponent,
         // CreateEventComponent,
         // ProfessionalEventComponent,
@@ -77,12 +85,13 @@ import { HomeComponent } from './home.component';
         // CreateProfessionalAlertComponent,
     ],
     imports: [
-        HomeRoutes
+        HomeRoutes,
+        CommonModule
         // ProfessionalRoutes,
         // CommonModule,
         // petsAppModule,
     ],
-    exports:[],
+    exports:[HeaderComponent, FeedMenuComponent, LeftMenuComponent, RightMenuComponent],
 })
 export class HomeModule { }
   

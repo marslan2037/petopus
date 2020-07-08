@@ -1,0 +1,121 @@
+<div class="header">
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-white fixed-bottom">
+            <div class="item">
+                <img src="assets/images/profile_mobile/feed.png">
+                <span class="caption">Feed</span> 
+            </div>
+            <div class="item">
+                <img src="assets/images/profile_mobile/service.png">
+                <span class="caption">Services</span>
+            </div>
+            <div class="item">
+                <img src="assets/images/profile_mobile/product.png">
+                <span class="caption">Product</span>
+            </div>
+            <div class="item">
+                <img src="assets/images/profile_mobile/about.png">
+                <span class="caption">About</span>
+            </div>
+
+            <div class="item">
+                <img src="assets/images/profile_mobile/more.png">
+                <span class="caption">More</span>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-3 potrait-padding">
+                <div class="logo"><img src="assets/images/logo_03.png"></div>
+                <div class="mobile-logo">
+                    <a href="#" id="clickme"><img src="assets/images/mobile-logo.png"></a>  
+                </div>
+
+                <div class="mydiv" style="left: -300px;">   
+                    <div class="chat_list active_chat"> 
+                        <div class="chat_people">
+                            <div class="chat_img"><a href="#"><img src="assets/images/profile_mobile/about.png"></a></div>
+                            <div class="chat_ib">Account Setting</div>
+                        </div>
+                    </div>
+
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"><a href="#"><img src="assets/images/profile_mobile/setting.png"></a></div>
+                            <div class="chat_ib">Profile Setting</div>
+                        </div>
+                    </div>
+
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"><a href="#"><img src="assets/images/profile_mobile/camera.png"></a></div>
+                            <div class="chat_ib">Upload Profile Photo</div>
+                        </div>
+                    </div>
+
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"><a href="#"><img src="assets/images/profile_mobile/camera.png"></a></div>
+                            <div class="chat_ib">Upload header Photo</div>
+                        </div>
+                    </div>
+
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"><a href="#"><img src="assets/images/profile_mobile/logout.png"></a></div>
+                            <div class="chat_ib">Logout</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search">
+                    <form>
+                        <input type="text" name="search" class="rounded-left">
+                        <button type="submit" class="rounded-right"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-1 col-sm-1 col-1 ">
+                <div class="mobile-search">
+                    <a href="#">  <img src="assets/images/profile/search.png"></a>
+                </div>
+
+                <div class="friends" *ngIf="owner_profile">
+                    <ul>
+                        <li><img src="assets/images/1_03.png" class="profile-img"><img class="status" src="assets/images/online_02.png"></li>
+                        <li><img src="assets/images/1_03.png" class="profile-img"><img class="status" src="assets/images/offline_02.png"></li>
+                        <li class="add"><a href=""><i class="fas fa-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-5  col-md-6 col-sm-6 col-8  mobile-width ">
+                <div class="setting">
+                    <ul>
+                        <li><a class="myPopover" data-toggle="popover" tabindex="0 " data-trigger="focus" data-placement="Bottom" data-original-title="" title=""><i class="far fa-comment-alt"></i></a></li>
+                        <li><a class="myPopover" data-toggle="popover" tabindex="0 " data-trigger="focus" data-placement="Bottom" data-original-title="" title=""><i class="far fa-bell"></i></a></li>
+                        <li><a class="myPopover" data-toggle="popover" tabindex="0 " data-trigger="focus" data-placement="Bottom" data-original-title="" title=""><i class="fas fa-cog"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="my-profile">
+                    <ul>
+                        <li>
+                            <img [src]="profilePicture || 'assets/images/1_03.png'" src="" class="profile-img">
+                            <img class="status" src="assets/images/online_02.png">
+                        </li>
+                        <li>
+                            <select>
+                                <!-- <option>{{this.user["nick_name"]}}</option> -->
+                                <option>{{nick_name}}</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-bar"><a href=""><i class="fas fa-bars"></i></a></div>
+            </div>
+        </div>
+    </div>
+</div>

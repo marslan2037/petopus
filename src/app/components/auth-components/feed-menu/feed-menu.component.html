@@ -1,0 +1,37 @@
+<div class="feed">
+    <div class="conatiner-fluid">
+        <div class="banner"><img src="assets/images//banner_02.png"  class='img-fluid w-100'></div>
+    </div>
+
+    <div class="mobile-profile">
+        <img src="assets/images//22_03.png">
+        <div>
+            <h6>John Doe</h6>
+            <p>Breedic Husky</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="nav" *ngIf="owner_profile">
+            <ul>
+                <li class="rounded-left"><a [routerLink]="[{ outlets: { center: ['profile'] } }]" routerLinkActive="active">Profile</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['newsFeed'] } }]" routerLinkActive="active">Feeds</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['services'] } }]" routerLinkActive="active">Services</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['events'] } }]" routerLinkActive="active">Events</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['petParks'] } }]" routerLinkActive="active">Parks</a></li>
+                <li style="width: 16%;"><a [routerLink]="[{ outlets: { center: ['petOwnerAnnounces'] } }]" routerLinkActive="active">Announces</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['nearby'] } }]" routerLinkActive="active">NearBy</a></li>
+                <li class="rounded-right"><a [routerLink]="[{ outlets: { center: ['alert'] } }]" routerLinkActive="active">Alerts</a></li>
+            </ul>
+        </div>
+
+        <div class="nav" *ngIf="!owner_profile">
+            <ul>
+                <li class="rounded-left"><a [routerLink]="[{ outlets: { center: ['profile'] } }]" routerLinkActive="active">About</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['newsFeed'] } }]" routerLinkActive="active">Feeds</a></li>
+                <li><a [routerLink]="[{ outlets: { center: ['services'] } }]" routerLinkActive="active">Services</a></li>
+                <li class="rounded-right"><a [routerLink]="[{ outlets: { center: ['alert'] } }]" routerLinkActive="active">Alerts</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

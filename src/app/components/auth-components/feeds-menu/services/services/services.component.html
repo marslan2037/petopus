@@ -1,0 +1,47 @@
+<div class="services">
+    <div class="heading">
+        Professional Services
+        <div class="button hover-class" (click)="DisplayServicesForm()">
+            <a><img src="assets/images/plus1.png"></a>
+            <span>Create services</span>
+        </div>
+    </div>
+
+    <hr>
+  
+    <div class="thumbnails">
+        <div class="row"> 
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 " *ngFor="let service of services">
+                <div class="left ">
+                    <div class="top">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="service_name" >{{service.name}}</div>
+                                <div class="petss">
+                                    <div class="titl">Pets </div>
+                                    <div class="pet_list">
+                                        <span >dog</span> 
+                                        <span >Cat</span> 
+                                        <span >dog</span> 
+                                        <span >Cat</span> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="right">
+                                    <div class="price"> From 25 $/hr</div>
+                                    <div class="negosioanle"><span>Negotiable:</span> Yes</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="discription">
+                            <p>kdashf kjhkadh kjsadhf kjdsahf</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
+</div>

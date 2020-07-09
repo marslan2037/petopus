@@ -19,9 +19,9 @@
                 <li class="rounded-left"><a routerLink="news-feed">Feeds</a></li>
                 <li class="rounded-left"><a routerLink="services">Services</a></li>
                 <li class="rounded-left" *ngIf="owner_profile"><a routerLink="events">Events</a></li>
-                <li class="rounded-left" *ngIf="owner_profile"><a>Parks</a></li>
-                <li class="rounded-left" *ngIf="owner_profile"><a>Announces</a></li>
-                <li class="rounded-left" *ngIf="owner_profile"><a>NearBy</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a routerLink="parks">Parks</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a routerLink="announcements">Announces</a></li>
+                <li class="rounded-left" *ngIf="owner_profile"><a routerLink="nearby">Nearby</a></li>
                 <li class="rounded-left"><a routerLink="alerts">Alerts</a></li>
             </ul>
         </div>

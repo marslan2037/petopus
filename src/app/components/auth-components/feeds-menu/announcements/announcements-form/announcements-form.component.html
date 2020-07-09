@@ -1,0 +1,193 @@
+<div class="create-announcement rounded-10">
+    <div class="heading">
+        Announcement Posting
+     
+        <div class="search">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Professional / Company Name:</label>
+                    <input type="text" class="form-control">
+                    <div>Name is required</div>
+                </div>
+
+                <div class="row" style="display: none;">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Province:</label>
+                        <input type="text" class="form-control">
+                        <div>Province is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">City:</label>
+                        <input type="text" class="form-control">
+                        <div>City is required</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12" style="display: none;">
+                        <label for="exampleInputPassword1">Postal:</label>
+                        <input type="text" class="form-control">
+                        <div>Postal Code is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Province:</label>
+                        <input type="text" class="form-control">
+                        <div>Province is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Service Type:</label>
+                        <select class="form-control">
+                            <option [value]="service.value" *ngFor = "let service of Services_Array">{{service.name}}</option>
+                        </select>
+                        <div>Services Types is required</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
+                        <label for="petType">Pet Type:</label>
+                        <select class="form-control">
+                            <option [value]="pet.value" *ngFor = "let pet of Pets_Array">{{pet.name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1"> Upload Avatar:</label>
+                    <div class="image-upload">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3">
+                                <label for="file-input" (click)="fileinput.click()">
+                                <img src="assets/images/createanouncement/upload.png">  </label>
+                                <input id="file-input" type="file" name="file" style="display:none" #fileinput/>
+                            </div>
+
+                            <div class="col-lg-10 col-md-10 col-sm-9">
+                                <div class="text">Upload Announcement Avatar Image</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                    </div>
+                </div>
+
+                <div class="price"><span>Service Price:</span></div>
+
+                <div class="row">
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
+                        <div class="row fee  ">Free:</div>
+                        <label class="container">
+                            <input type="checkbox" name="free">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2" *ngIf="free != true">
+                        <div class="row fee">Negotiable:</div>
+                            <label class="container">
+                            <input type="checkbox" name="negotiable">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2" *ngIf="free != true">
+                        <div class="row fee  ">Call for price:</div>
+                        <label class="container">
+                            <input type="checkbox" name="call_for_price">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-5" *ngIf="free != true">
+                        <label for="exampleInputPassword1">Price:</label>
+                        <input type="number" class="form-control"> 
+                        <div>Price is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-5" *ngIf="free != true">
+                        <label for="exampleInputPassword1">Per:</label>
+                        <select class="form-control">
+                            <option [value]="per.value" *ngFor = "let per of per_array">{{per.name}}</option>
+                        </select>
+                        <div>Per is required</div>
+                    </div>
+                </div>
+  
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Service Discription:</label>
+                    <textarea style="width: 100%;" name="description"></textarea>
+                    <div>Service Description is required</div>            
+                </div>
+
+                <div class="form-group" >
+                    <label for="exampleInputPassword1"> Upload Avatar:</label>
+                    <div class="image-upload">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3">
+                                <label for="file-input">
+                                    <img src="assets/images/createanouncement/upload.png">
+                                </label>
+                            </div>
+                            <div class="col-lg-10 col-md-10 col-sm-9" >
+                                <div class="text">  Upload Announcement Avatar Image</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thumbnails_form">  
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album4.png" alt="img">
+                            
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album23.png" alt="img">
+                            
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>          
+                    </div>  
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Announce</button>
+            </form>
+        </div>
+    </div>
+</div>

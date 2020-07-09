@@ -1,0 +1,39 @@
+<div class="Event">
+    <div class="heading">
+        Events
+        <div class="button hover-class" (click)="DisplayEventForm()">
+            <a><img src="assets/images/plus1.png"></a>
+            <span>Create  Event</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="thumbnails">  
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 " *ngFor ="let event of events_formated">
+                <div class="left ">
+                    <div class="images">
+                        <img class="img1" src="assets/images/event/events1.png">
+                        <div class="centered">{{event.dates}}
+                            <div>{{event.month_year}} </div>
+                        </div>
+                        <img class="img2" src="assets/images/plus.png">
+                    </div>
+
+                    <div class="heading">
+                        {{event.name}}
+                        <div class="text">{{event.description}}</div>
+                        <div class="top"> 
+                            <img src="assets/images/announces/maps.png"><a href="#">Petopus App</a>
+                            <div class="people"><img src="assets/images/people_03.png"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+

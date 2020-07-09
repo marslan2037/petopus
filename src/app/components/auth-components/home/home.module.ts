@@ -9,10 +9,18 @@ import { HeaderComponent } from '../header/header.component';
 import { FeedMenuComponent } from '../feeds-menu/feed-menu/feed-menu.component';
 import { LeftMenuComponent } from '../left-menu/left-menu.component';
 import { AboutComponent } from './../feeds-menu/about/about.component';
-import { ServicesComponent } from './../feeds-menu/services/services.component';
-import { AlertsComponent } from './../feeds-menu/alerts/alerts.component';
+import { ServicesComponent } from './../feeds-menu/services/services/services.component';
+import { ServicesFormComponent } from './../feeds-menu/services/services-form/services-form.component';
+import { AlertsComponent } from './../feeds-menu/alerts/alerts/alerts.component';
+import { AlertsFormComponent } from './../feeds-menu/alerts/alerts-form/alerts-form.component';
 import { NewsFeedComponent } from './../feeds-menu/news-feed/news-feed.component';
-import { EventsComponent } from './../feeds-menu/events/events.component';
+import { EventsComponent } from './../feeds-menu/events/events/events.component';
+import { EventsFormComponent } from './../feeds-menu/events/events-form/events-form.component';
+import { ParksComponent } from './../feeds-menu/parks/parks/parks.component';
+import { ParksFormComponent } from './../feeds-menu/parks/parks-form/parks-form.component';
+import { NearByComponent } from './../feeds-menu/nearby/nearby.component';
+import { AnnouncementsComponent } from './../feeds-menu/announcements/announcements/announcements.component';
+import { AnnouncementsFormComponent } from './../feeds-menu/announcements/announcements-form/announcements-form.component';
 import { RightMenuComponent } from '../right-menu/right-menu.component';
 
 // import { CreateEventComponent } from '../components/professional/professional-event/create-event/create-event.component';
@@ -62,9 +70,17 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         RightMenuComponent,
         AboutComponent,
         ServicesComponent,
+        ServicesFormComponent,
         AlertsComponent,
+        AlertsFormComponent,
         NewsFeedComponent,
         EventsComponent,
+        EventsFormComponent,
+        ParksComponent,
+        ParksFormComponent,
+        NearByComponent,
+        AnnouncementsComponent,
+        AnnouncementsFormComponent,
         // ServicesComponent,
         // CreateEventComponent,
         // ProfessionalEventComponent,
@@ -101,7 +117,17 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         // CommonModule,
         // petsAppModule,
     ],
-    exports:[HeaderComponent, FeedMenuComponent, LeftMenuComponent, RightMenuComponent, AlertsComponent, EventsComponent],
+    exports: [
+        HeaderComponent, 
+        FeedMenuComponent,
+        LeftMenuComponent, 
+        RightMenuComponent, 
+        AlertsComponent, 
+        EventsComponent, 
+        ParksComponent, 
+        AnnouncementsComponent, 
+        NearByComponent
+    ],
 })
 export class HomeModule { }
   

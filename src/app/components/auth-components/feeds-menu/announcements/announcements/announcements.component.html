@@ -1,0 +1,58 @@
+<div class="petAnnounces">
+    <div class="heading">
+        Announcements 
+
+        <div class="button hover-class" (click)="DisplayAnnouncementForm()">
+            <a><img src="assets/images/plus1.png"></a>
+            <span>Create Announcment</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="thumbnails">  
+        <div class="row">
+            <div class="col-lg-6 col-md-6  col-sm-12 mobile_width_left " *ngFor="let announce of announces">
+                <div class="left ">
+                    <div class="images" *ngFor="let pic of announce.pictures; let i = index">
+                        <img [src]="domain+pic.avatar_url ||'assets/images/announces/announces-dog5.png'" >  
+                    </div>
+
+                    <div class="images" *ngIf="announce.pictures == undefined">
+                        <img src="assets/images/announces/announces-dog5.png" >  
+                    </div>
+
+                    <div class="heading">
+                        {{announce.service}}
+                        <div class="text">{{announce.description}}</div>
+                        <div class="top"> 
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-6"><img src="assets/images/announces/maps.png"><a href="#">{{announce.province}}</a></div>
+                                <div class="col-lg-6 col-md-6 col-6"> <img src="assets/images/announces/maps.png"><a href="#">Pet Show</a></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="botom"> 
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-6" *ngIf="announce.free == undefined || announce.free == false">
+                                    <img src="assets/images/announces/dollar.png">
+                                    <a href="#">${{announce.price}}</a>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-6">
+                                    <span>
+                                        <img src="assets/images/announces/dogs.png">
+                                        <a href="#">{{announce.pet_type}}</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+

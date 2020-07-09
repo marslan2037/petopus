@@ -1,0 +1,195 @@
+<div class="create-petParks rounded-10">
+    <div class="heading">
+        Create an PetPark
+     
+        <div class="search">
+            <form>
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Park Name:</label>
+                        <input type="text" class="form-control">
+                        <div>Park Name is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Location Type:</label>
+                        <select class="form-control">
+                            <option value="outdoor">Outdoor</option>
+                            <option value="indoor">Indoor</option>
+                        </select>
+                        <div>Type is required</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Status</label>
+                        <select class="form-control">
+                            <option value="private">Private</option>
+                            <option value="public">Public</option>
+                        </select>
+                        <div>Status is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Address:</label>
+                        <input type="text" class="form-control">
+                        <div>Park Address is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Phone Number:</label>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <input type="text" class="form-control">
+                        </div>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Park Opening Hours:</label>
+                        <input type="text" class="form-control start-time timepicker-12-hr hasWickedpicker">
+                        <div>Event Start Time is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                        <label for="exampleInputPassword1">Park Closing Hours:</label>
+                        <input type="text" class="form-control end-time timepicker-12-hr hasWickedpicker">
+                        <div>Event Time End is required</div>
+                    </div>
+                </div>
+
+                <div class="price"><span>Park Price:</span></div>
+
+                <div class="row">
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
+                        <div class="row fee  ">Free:</div>
+                        <label class="container">
+                            <input type="checkbox" name="free">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                        <label for="exampleInputPassword1">Price:</label>
+                        <input type="number" class="form-control"> 
+                    </div>
+
+                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                        <label for="exampleInputPassword1">Per:</label>
+                        <select class="form-control">
+                            <option value="Hour" selected>Hour</option>
+                            <option value="Day">Day</option>
+                            <option value="Day">Week</option>
+                            <option value="Day">Month</option>
+                        </select>
+                        <div>This Field is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Park Discription:</label>
+                    <textarea style="width: 100%;" name="description"></textarea>
+                    <div>Event Description is required</div>            
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Park Avatar:</label>
+                    <div class="image-upload" >
+                        <label for="file-input">
+                        <img src="assets/images/createanouncement/upload.png">  </label>
+                        <input type="file" name="file" style="display:none"/><span>Upload Your Image Here</span>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Information of  Park Security:</label>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-4 col-sm-4 col-4  wdth-createpark" > 
+                            <label class="container">Parking
+                                <input type="checkbox" name="parking-box">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4  wdth-createpark"> 
+                            <label class="container">Fancy
+                                <input type="checkbox" name="fancy-box">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-3  col-md-4 col-sm-4 col-4  wdth-createpark">
+                            <label class="container">Off Leash
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-4   wdth-createpark">
+                            <label class="container">Dog Area
+                                <input type="checkbox" class="checkmark">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div> 
+
+                        <div class="col-lg-2 col-md-4 col-sm-4 col-4  wdth-createpark"> 
+                            <label class="container">Bags
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4  wdth-createpark wdth-createpark ">
+                            <label class="container">RestRoom
+                                <input type="checkbox" name="rest-room" ngModel="models.rest-room">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4  col-sm-4 col-4 wdth-createpark ">
+                            <label class="container">Lighting
+                                <input type="checkbox" name="lighting" ngModel="models.lighting">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-sm-5 col-6 wdth-createpark"> 
+                            <label class="container">Water Situation
+                                <input type="checkbox" name="water-situation" ngModel="models.water-situation">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1"> Park Picture:</label>
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="assets/images/createanouncement/upload.png">
+                        </label>
+                        <input id="file-input" type="file"><span>Upload Your Image Here</span>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </form>
+        </div>
+    </div>
+</div>

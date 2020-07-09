@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss']
+    selector: 'services-form',
+    templateUrl: './services-form.component.html',
+    styleUrls: ['./services-form.component.scss']
 })
 
-export class ServicesComponent {
+export class ServicesFormComponent {
 
     services:any = [];
     creating_service:boolean = false;

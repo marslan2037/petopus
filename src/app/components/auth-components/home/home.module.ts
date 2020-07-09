@@ -6,9 +6,13 @@ import { HomeRoutes } from './home.routing';
 
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
-import { FeedMenuComponent } from '../feed-menu/feed-menu.component';
+import { FeedMenuComponent } from '../feeds-menu/feed-menu/feed-menu.component';
 import { LeftMenuComponent } from '../left-menu/left-menu.component';
-import { AboutComponent } from './../about/about.component';
+import { AboutComponent } from './../feeds-menu/about/about.component';
+import { ServicesComponent } from './../feeds-menu/services/services.component';
+import { AlertsComponent } from './../feeds-menu/alerts/alerts.component';
+import { NewsFeedComponent } from './../feeds-menu/news-feed/news-feed.component';
+import { EventsComponent } from './../feeds-menu/events/events.component';
 import { RightMenuComponent } from '../right-menu/right-menu.component';
 
 // import { CreateEventComponent } from '../components/professional/professional-event/create-event/create-event.component';
@@ -57,6 +61,10 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         LeftMenuComponent,
         RightMenuComponent,
         AboutComponent,
+        ServicesComponent,
+        AlertsComponent,
+        NewsFeedComponent,
+        EventsComponent,
         // ServicesComponent,
         // CreateEventComponent,
         // ProfessionalEventComponent,
@@ -93,7 +101,7 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         // CommonModule,
         // petsAppModule,
     ],
-    exports:[HeaderComponent, FeedMenuComponent, LeftMenuComponent, RightMenuComponent],
+    exports:[HeaderComponent, FeedMenuComponent, LeftMenuComponent, RightMenuComponent, AlertsComponent, EventsComponent],
 })
 export class HomeModule { }
   

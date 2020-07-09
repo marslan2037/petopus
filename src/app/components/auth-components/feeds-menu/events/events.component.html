@@ -1,0 +1,214 @@
+<div class="Event" *ngIf="!creating_event">
+    <div class="heading">
+        Events
+        <div class="button hover-class" (click)="DisplayEventForm()">
+            <a><img src="assets/images/plus1.png"></a>
+            <span>Create  Event</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="thumbnails">  
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 " *ngFor ="let event of events_formated">
+                <div class="left ">
+                    <div class="images">
+                        <img class="img1" src="assets/images/event/events1.png">
+                        <div class="centered">{{event.dates}}
+                            <div>{{event.month_year}} </div>
+                        </div>
+                        <img class="img2" src="assets/images/plus.png">
+                    </div>
+
+                    <div class="heading">
+                        {{event.name}}
+                        <div class="text">{{event.description}}</div>
+                        <div class="top"> 
+                            <img src="assets/images/announces/maps.png"><a href="#">Petopus App</a>
+                            <div class="people"><img src="assets/images/people_03.png"></div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+</div>
+
+
+
+<div class="create-Event rounded-10" *ngIf="creating_event">
+    <div class="heading">
+        Create an Event
+     
+        <div class="search">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Status*</label>
+                    <select class="form-control">
+                        <option value="Private Event">Private Event</option>
+                        <option value="Public Event">Public Event</option>
+                    </select>
+                    <div>Event Type is required</div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">Name</label>
+                        <input type="text" class="form-control">
+                        <div>Event Name is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">Full Address</label>
+                        <input type="text" class="form-control">
+                        <div>Event Location is required</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">Start Date</label>
+                        <input type="text" class="form-control start-date datepicker">
+                        <div>Start date is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">End Date</label>
+                        <input type="text" class="form-control end-date datepicker" placeholder="" >
+                        <div>Event Location is required</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">Start Time</label>
+                        <input type="text"class="form-control start-time timepicker-12-hr hasWickedpicker">
+                        <div>Event Start Time is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                        <label for="exampleInputPassword1">End Time</label>
+                        <input type="text" class="form-control end-time timepicker-12-hr hasWickedpicker">
+                        <div>Event Time End is required</div>
+                    </div>
+                </div>
+
+                <div class="price"><span>Event Price:</span></div>
+
+                <div class="row">
+                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
+                        <div class="row fee  ">Free:</div>
+                        <label class="container">
+                            <input type="checkbox" name="free">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
+                        <label for="exampleInputPassword1">Price:</label>
+                        <input type="number" class="form-control"> 
+                        <div>This Field is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Invite Followers:</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Event Discription:</label>
+                    <textarea name="description" style="width: 100%;"></textarea>
+                    <div class="help-block">Event Description is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1"> Event Avatar:</label>
+                    <div class="image-upload">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3">
+                                <label for="files">
+                                    <img src="assets/images/createanouncement/upload.png">
+                                </label>
+                                <input type="file"/>
+                            </div>
+
+                            <div class="col-lg-10 col-md-10 col-sm-9">
+                                <div class="text">Upload Your Image header</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1"> Event Pictures:</label>
+                    <div class="image-upload">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-3">
+                                <label for="files">
+                                    <img src="assets/images/createanouncement/upload.png">
+                                </label>
+                            </div>
+
+                            <div class="col-lg-10 col-md-10 col-sm-9">
+                                <div class="text"> Upload Upto 10 Images Here</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thumbnails_form">  
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album4.png" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album23.png" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="col-lg-3 col-md-6">
+                            <div class="left_forms ">
+                                <div class="images">
+                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
+                                </div>
+                            </div>
+                        </div>          
+                    </div>  
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Event</button>
+            </form>
+        </div>
+    </div>
+</div>
+ 
+
+

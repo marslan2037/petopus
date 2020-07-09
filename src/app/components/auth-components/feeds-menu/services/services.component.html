@@ -1,0 +1,131 @@
+<div class="create-Services rounded-10" *ngIf="creating_service">
+    <div class="heading">
+        Create Services
+
+        <div class="search">
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Service Name:</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" name="serviceName" />
+                    <div>Service Name is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Service Type:</label>
+                    <select class="form-control needs-validation" id="type" name="type">
+                        <option></option>
+                    </select>
+                    <div>Service Type is required</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Pet Type:</label>
+                    <select class="form-control" id="pettype" name="pettype">
+                        <option></option>
+                    </select>
+                    <div>Pet Type is required</div>
+                </div>
+
+                <div class="price"><span>Service Price:</span></div>
+
+                <div class="row">
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="exampleInputPassword1">Price:</label>
+                        <input type="number" class="form-control" name="price"/>
+                        <div>Price is required</div>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        <label for="exampleInputPassword1">Per:</label>
+                        <select class="form-control" id="per" name="per">
+                            <option></option>
+                        </select>
+                        <div>Per is required</div>
+                    </div>
+                </div>
+
+                <div class="row mobile-font-size">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-4">
+                        <label class="container">Negotiable
+                            <input type="checkbox" name="negotiable"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-5 mobile-sides-padding">
+                        <label class="container">Call for Price
+                            <input type="checkbox" name="call_for_price"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-3 col-3">
+                        <label class="container">Free
+                            <input type="checkbox" name="free"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Service Discription:</label>
+                    <textarea style="width: 100%;" name="description"></textarea>
+                    <div>Event Description is required</div>            
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create Service</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="services" *ngIf="!creating_service">
+    <div class="heading">
+        Professional Services
+        <div class="button hover-class" (click)="DisplayServicesForm()">
+            <a><img src="assets/images/plus1.png"></a>
+            <span>Create services</span>
+        </div>
+    </div>
+
+    <hr>
+  
+    <div class="thumbnails">
+        <div class="row"> 
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 " *ngFor="let service of services">
+                <div class="left ">
+                    <div class="top">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="service_name" >{{service.name}}</div>
+                                <div class="petss">
+                                    <div class="titl">Pets </div>
+                                    <div class="pet_list">
+                                        <span >dog</span> 
+                                        <span >Cat</span> 
+                                        <span >dog</span> 
+                                        <span >Cat</span> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="right">
+                                    <div class="price"> From 25 $/hr</div>
+                                    <div class="negosioanle"><span>Negotiable:</span> Yes</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="discription">
+                            <p>kdashf kjhkadh kjsadhf kjdsahf</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
+</div>

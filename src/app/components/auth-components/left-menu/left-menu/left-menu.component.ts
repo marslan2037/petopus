@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
   
 export class LeftMenuComponent {
+
+    profilePicture:any;
     role : String;
     user : [];
-    profilePicture : String;
     userdata : [];
     owner_profile:boolean = false;
     nick_name:any;

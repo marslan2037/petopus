@@ -14,6 +14,16 @@ import { ParksFormComponent } from './../feeds-menu/parks/parks-form/parks-form.
 import { NearByComponent } from './../feeds-menu/nearby/nearby.component';
 import { AnnouncementsComponent } from './../feeds-menu/announcements/announcements/announcements.component';
 import { AnnouncementsFormComponent } from './../feeds-menu/announcements/announcements-form/announcements-form.component';
+import { AlbumComponent } from './../left-menu/album/album/album.component';
+import { AlbumFormComponent } from './../left-menu/album/album-form/album-form.component';
+import { FriendsComponent } from './../left-menu/friends/friends.component';
+import { PublishArticleComponent } from './../left-menu/publish-article/publish-article.component';
+import { ChatComponent } from './../left-menu/chat/chat.component';
+import { GroupsComponent } from './../left-menu/groups/groups.component';
+import { AppointmentsComponent } from './../left-menu/appointments/appointments.component';
+import { BreedersComponent } from './../left-menu/breeders/breeders.component';
+import { AdvertisementsComponent } from './../left-menu/advertisements/advertisements.component';
+import { FeedbackComponent } from './../left-menu/feedback/feedback.component';
 
 const routes: Routes = [
 
@@ -31,18 +41,30 @@ const routes: Routes = [
             { path: 'alerts', component: AlertsComponent },
             { path: 'alerts/create', component: AlertsFormComponent },
 
-            { path: 'news-feed', component: NewsFeedComponent },
+            { path: 'announcements', component: AnnouncementsComponent },
+            { path: 'announcements/create', component: AnnouncementsFormComponent },
 
             { path: 'events', component: EventsComponent },
             { path: 'events/create', component: EventsFormComponent },
             
             { path: 'parks', component: ParksComponent },
             { path: 'parks/create', component: ParksFormComponent },
+            
+            { path: 'album', component: AlbumComponent },
+            { path: 'album/create', component: AlbumFormComponent },
 
+            { path: 'news-feed', component: NewsFeedComponent },
             { path: 'nearby', component: NearByComponent },
 
-            { path: 'announcements', component: AnnouncementsComponent },
-            { path: 'announcements/create', component: AnnouncementsFormComponent },
+            { path: 'friends', component: FriendsComponent },
+            { path: 'chat', component: ChatComponent },
+            { path: 'admin-chat', component: ChatComponent },
+            { path: 'groups', component: GroupsComponent },
+            { path: 'appointments', component: AppointmentsComponent },
+            { path: 'breeders', component: BreedersComponent },
+            { path: 'advirtisement', component: AdvertisementsComponent },
+            { path: 'feedback', component: FeedbackComponent },
+            { path: 'publish-articles', component: PublishArticleComponent },
         ]
     },
 ];

@@ -7,7 +7,7 @@ import { HomeRoutes } from './home.routing';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
 import { FeedMenuComponent } from '../feeds-menu/feed-menu/feed-menu.component';
-import { LeftMenuComponent } from '../left-menu/left-menu.component';
+import { LeftMenuComponent } from '../left-menu/left-menu/left-menu.component';
 import { AboutComponent } from './../feeds-menu/about/about.component';
 import { ServicesComponent } from './../feeds-menu/services/services/services.component';
 import { ServicesFormComponent } from './../feeds-menu/services/services-form/services-form.component';
@@ -22,6 +22,16 @@ import { NearByComponent } from './../feeds-menu/nearby/nearby.component';
 import { AnnouncementsComponent } from './../feeds-menu/announcements/announcements/announcements.component';
 import { AnnouncementsFormComponent } from './../feeds-menu/announcements/announcements-form/announcements-form.component';
 import { RightMenuComponent } from '../right-menu/right-menu.component';
+import { AlbumComponent } from './../left-menu/album/album/album.component';
+import { AlbumFormComponent } from './../left-menu/album/album-form/album-form.component';
+import { FriendsComponent } from './../left-menu/friends/friends.component';
+import { PublishArticleComponent } from './../left-menu/publish-article/publish-article.component';
+import { ChatComponent } from './../left-menu/chat/chat.component';
+import { GroupsComponent } from './../left-menu/groups/groups.component';
+import { AppointmentsComponent } from './../left-menu/appointments/appointments.component';
+import { BreedersComponent } from './../left-menu/breeders/breeders.component';
+import { AdvertisementsComponent } from './../left-menu/advertisements/advertisements.component';
+import { FeedbackComponent } from './../left-menu/feedback/feedback.component';
 
 // import { CreateEventComponent } from '../components/professional/professional-event/create-event/create-event.component';
 // import { Article2Component } from '../components/professional/article2/article2.component';
@@ -81,6 +91,16 @@ import { RightMenuComponent } from '../right-menu/right-menu.component';
         NearByComponent,
         AnnouncementsComponent,
         AnnouncementsFormComponent,
+        AlbumComponent,
+        AlbumFormComponent,
+        FriendsComponent,
+        PublishArticleComponent,
+        ChatComponent,
+        GroupsComponent,
+        AppointmentsComponent,
+        BreedersComponent,
+        AdvertisementsComponent,
+        FeedbackComponent,
         // ServicesComponent,
         // CreateEventComponent,
         // ProfessionalEventComponent,

@@ -25,6 +25,7 @@ import { BreedersComponent } from './../pages/breeders/breeders/breeders.compone
 import { BreedersFormComponent } from './../pages/breeders/breeders-form/breeders-form.component';
 import { AdvertisementsComponent } from './../pages/advertisements/advertisements.component';
 import { FeedbackComponent } from './../pages/feedback/feedback.component';
+import { AuthService } from './../../../services/auth-services/auth-services.service';
 
 const routes: Routes = [
 
@@ -33,42 +34,42 @@ const routes: Routes = [
         component: HomeComponent,
 
         children: [
-            { path: '', component: NewsFeedComponent },
-            { path: 'about', component: AboutComponent },
+            { path: '', component: NewsFeedComponent, canActivate: [AuthService] },
+            { path: 'about', component: AboutComponent, canActivate: [AuthService] },
 
-            { path: 'services', component: ServicesComponent },
-            { path: 'services/create', component: ServicesFormComponent },
+            { path: 'services', component: ServicesComponent, canActivate: [AuthService] },
+            { path: 'services/create', component: ServicesFormComponent, canActivate: [AuthService] },
             
-            { path: 'alerts', component: AlertsComponent },
-            { path: 'alerts/create', component: AlertsFormComponent },
+            { path: 'alerts', component: AlertsComponent, canActivate: [AuthService] },
+            { path: 'alerts/create', component: AlertsFormComponent, canActivate: [AuthService] },
 
-            { path: 'announcements', component: AnnouncementsComponent },
-            { path: 'announcements/create', component: AnnouncementsFormComponent },
+            { path: 'announcements', component: AnnouncementsComponent, canActivate: [AuthService] },
+            { path: 'announcements/create', component: AnnouncementsFormComponent, canActivate: [AuthService] },
 
-            { path: 'events', component: EventsComponent },
-            { path: 'events/create', component: EventsFormComponent },
+            { path: 'events', component: EventsComponent, canActivate: [AuthService] },
+            { path: 'events/create', component: EventsFormComponent, canActivate: [AuthService] },
             
-            { path: 'parks', component: ParksComponent },
-            { path: 'parks/create', component: ParksFormComponent },
+            { path: 'parks', component: ParksComponent, canActivate: [AuthService] },
+            { path: 'parks/create', component: ParksFormComponent, canActivate: [AuthService] },
             
-            { path: 'album', component: AlbumComponent },
-            { path: 'album/create', component: AlbumFormComponent },
+            { path: 'album', component: AlbumComponent, canActivate: [AuthService] },
+            { path: 'album/create', component: AlbumFormComponent, canActivate: [AuthService] },
 
-            { path: 'news-feed', component: NewsFeedComponent },
-            { path: 'nearby', component: NearByComponent },
+            { path: 'news-feed', component: NewsFeedComponent, canActivate: [AuthService] },
+            { path: 'nearby', component: NearByComponent, canActivate: [AuthService] },
 
-            { path: 'friends', component: FriendsComponent },
-            { path: 'chat', component: ChatComponent },
-            { path: 'admin-chat', component: ChatComponent },
-            { path: 'groups', component: GroupsComponent },
-            { path: 'appointments', component: AppointmentsComponent },
+            { path: 'friends', component: FriendsComponent, canActivate: [AuthService] },
+            { path: 'chat', component: ChatComponent, canActivate: [AuthService] },
+            { path: 'admin-chat', component: ChatComponent, canActivate: [AuthService] },
+            { path: 'groups', component: GroupsComponent, canActivate: [AuthService] },
+            { path: 'appointments', component: AppointmentsComponent, canActivate: [AuthService] },
 
-            { path: 'breeders', component: BreedersComponent },
-            { path: 'breeders/create', component: BreedersFormComponent },
+            { path: 'breeders', component: BreedersComponent, canActivate: [AuthService] },
+            { path: 'breeders/create', component: BreedersFormComponent, canActivate: [AuthService] },
             
-            { path: 'advirtisement', component: AdvertisementsComponent },
-            { path: 'feedback', component: FeedbackComponent },
-            { path: 'publish-articles', component: PublishArticleComponent },
+            { path: 'advirtisement', component: AdvertisementsComponent, canActivate: [AuthService] },
+            { path: 'feedback', component: FeedbackComponent, canActivate: [AuthService] },
+            { path: 'publish-articles', component: PublishArticleComponent, canActivate: [AuthService] },
         ]
     },
 ];

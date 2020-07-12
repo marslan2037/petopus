@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { TokenInterceptor } from './interceptor/interceptor.service';
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
@@ -39,7 +41,7 @@ import { ComponentsCommunicationService } from './services/component-communicati
         NgxLoadingModule.forRoot({}),
         ToastrModule.forRoot(),
     ],
-    providers: [LoginService, ApiServicesService, AuthService, ComponentsCommunicationService],
+    providers: [LoginService, ApiServicesService, AuthService, ComponentsCommunicationService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

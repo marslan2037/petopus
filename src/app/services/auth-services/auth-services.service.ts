@@ -15,8 +15,7 @@ export class AuthService implements CanActivate {
         }
 
         sessionStorage.clear();
-        // this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         
         return false;
     }
@@ -28,8 +27,7 @@ export class AuthService implements CanActivate {
         }
 
         sessionStorage.clear();
-        // this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         
         return false;
     }

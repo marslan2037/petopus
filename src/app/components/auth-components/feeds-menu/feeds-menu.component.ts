@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'p-feed-menu',
-    templateUrl: './feed-menu.component.html',
-    styleUrls: ['./feed-menu.component.scss']
+    selector: 'feeds-menu',
+    templateUrl: './feeds-menu.component.html',
+    styleUrls: ['./feeds-menu.component.scss']
 })
   
-export class FeedMenuComponent {
+export class FeedsMenuComponent {
     role : String;
     user : [];
     profilePicture : String;

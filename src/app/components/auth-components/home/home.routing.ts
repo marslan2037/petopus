@@ -21,7 +21,8 @@ import { PublishArticleComponent } from './../left-menu/publish-article/publish-
 import { ChatComponent } from './../left-menu/chat/chat.component';
 import { GroupsComponent } from './../left-menu/groups/groups.component';
 import { AppointmentsComponent } from './../left-menu/appointments/appointments.component';
-import { BreedersComponent } from './../left-menu/breeders/breeders.component';
+import { BreedersComponent } from './../left-menu/breeders/breeders/breeders.component';
+import { BreedersFormComponent } from './../left-menu/breeders/breeders-form/breeders-form.component';
 import { AdvertisementsComponent } from './../left-menu/advertisements/advertisements.component';
 import { FeedbackComponent } from './../left-menu/feedback/feedback.component';
 
@@ -61,7 +62,10 @@ const routes: Routes = [
             { path: 'admin-chat', component: ChatComponent },
             { path: 'groups', component: GroupsComponent },
             { path: 'appointments', component: AppointmentsComponent },
+
             { path: 'breeders', component: BreedersComponent },
+            { path: 'breeders/create', component: BreedersFormComponent },
+            
             { path: 'advirtisement', component: AdvertisementsComponent },
             { path: 'feedback', component: FeedbackComponent },
             { path: 'publish-articles', component: PublishArticleComponent },

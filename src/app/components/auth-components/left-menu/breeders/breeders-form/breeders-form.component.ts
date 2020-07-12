@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'breeders',
-    templateUrl: './breeders.component.html',
-    styleUrls: ['./breeders.component.scss']
+    selector: 'breeders-form',
+    templateUrl: './breeders-form.component.html',
+    styleUrls: ['./breeders-form.component.scss']
 })
   
-export class BreedersComponent {
+export class BreedersFormComponent {
     albumsType:any;
     imageArray:any;
     // role : String;

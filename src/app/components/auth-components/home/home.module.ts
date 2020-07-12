@@ -29,7 +29,8 @@ import { PublishArticleComponent } from './../left-menu/publish-article/publish-
 import { ChatComponent } from './../left-menu/chat/chat.component';
 import { GroupsComponent } from './../left-menu/groups/groups.component';
 import { AppointmentsComponent } from './../left-menu/appointments/appointments.component';
-import { BreedersComponent } from './../left-menu/breeders/breeders.component';
+import { BreedersComponent } from './../left-menu/breeders/breeders/breeders.component';
+import { BreedersFormComponent } from './../left-menu/breeders/breeders-form/breeders-form.component';
 import { AdvertisementsComponent } from './../left-menu/advertisements/advertisements.component';
 import { FeedbackComponent } from './../left-menu/feedback/feedback.component';
 
@@ -99,6 +100,7 @@ import { FeedbackComponent } from './../left-menu/feedback/feedback.component';
         GroupsComponent,
         AppointmentsComponent,
         BreedersComponent,
+        BreedersFormComponent,
         AdvertisementsComponent,
         FeedbackComponent,
         // ServicesComponent,

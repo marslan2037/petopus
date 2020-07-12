@@ -1,0 +1,17 @@
+.container {
+    @media (min-width: 320px) and (max-width: 767px) {
+        padding: 0;
+    }
+    .account-buttons {
+        @media (min-width: 320px) and (max-width: 767px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+        }
+        button {
+            @media (min-width: 320px) and (max-width: 767px) {
+                margin: 0;
+            }
+        }
+    }
+}

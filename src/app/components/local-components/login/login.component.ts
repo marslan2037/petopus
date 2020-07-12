@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'login',
@@ -10,14 +11,22 @@ import { LoginService } from './login.service';
 })
 
 export class LoginComponent {
+
     public token: any;
     public error: any;
     public error_state= false;
     loader = false;
     loadingScreen:boolean = false;
     model: any = {};
+    loading:boolean = false;
+    submitted:boolean = false;
 
-    constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+    constructor(
+            private toastr: ToastrService,
+            private formBuilder: FormBuilder, 
+            private loginService: LoginService, 
+            private router: Router
+        ) {
         this.CreateForm();
     }
 
@@ -41,6 +50,8 @@ export class LoginComponent {
     }
 
     SubmitData() {
+        this.loading = true;
+        this.submitted = true;
         let data = this.form.value;
 
         const login_information = [{
@@ -51,6 +62,10 @@ export class LoginComponent {
         }];
 
         this.loginService.DoLogin(login_information).subscribe((response) => {
+            this.loading = false;
+            this.submitted = false;
+            this.toastr.success('Login Successfully');
+
             sessionStorage.setItem('user_id', response['user_id']);
             sessionStorage.setItem('token', response["authentication_token"]);
             sessionStorage.setItem('nick_name', response["nickname"]);
@@ -58,18 +73,14 @@ export class LoginComponent {
 
             this.router.navigate(['/home']);
         }, error => {
-            console.log(error);
-            if(error.status == 401){
-                // this.toastr.clear();
-                //  this.toastr.error(error.error.message, "Authentication Error", {
-                //          //timeOut: 2000
-                //  })
+            this.loading = false;
+            this.submitted = false;
+            
+            if(error.status == 401) {
+                this.toastr.error(error.error.message, "Authentication Error");
             }
             else{
-                // this.toastr.clear();
-                // this.toastr.error("Network Faild! Unable to Connect to Server", "Network Error", {
-                //     //timeOut: 2000
-                // })
+                this.toastr.error("Network Faild! Unable to Connect to Server", "Network Error");
             }
         })
     }

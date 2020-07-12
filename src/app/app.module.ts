@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// import { NgxLoadingModule } from 'ngx-loading';
-// import { ToastrModule } from 'ngx-toastr';
+import { NgxLoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
 
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +36,8 @@ import { ComponentsCommunicationService } from './services/component-communicati
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxLoadingModule.forRoot({}),
+        ToastrModule.forRoot(),
     ],
     providers: [LoginService, ApiServicesService, AuthService, ComponentsCommunicationService],
     bootstrap: [AppComponent]

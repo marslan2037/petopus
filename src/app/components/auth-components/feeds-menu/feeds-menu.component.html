@@ -12,17 +12,17 @@
     </div>
 
     <div class="container">
-
         <div class="nav">
             <ul>
-                <li class="rounded-left"><a routerLink="about">About</a></li>
+                <li *ngFor="let menu of active_menu_list" [ngClass]="{'active': menu.is_active}"><a class="hover-class" (click)="GotoPage(menu.url, menu.id)">{{menu.name}}</a></li>
+                <!-- <li class="rounded-left"><a routerLink="about">About</a></li>
                 <li class="rounded-left"><a routerLink="news-feed">Feeds</a></li>
                 <li class="rounded-left"><a routerLink="services">Services</a></li>
                 <li class="rounded-left" *ngIf="owner_profile"><a routerLink="events">Events</a></li>
                 <li class="rounded-left" *ngIf="owner_profile"><a routerLink="parks">Parks</a></li>
                 <li class="rounded-left" *ngIf="owner_profile"><a routerLink="announcements">Announces</a></li>
                 <li class="rounded-left" *ngIf="owner_profile"><a routerLink="nearby">Nearby</a></li>
-                <li class="rounded-left"><a routerLink="alerts">Alerts</a></li>
+                <li class="rounded-left"><a routerLink="alerts">Alerts</a></li> -->
             </ul>
         </div>
     </div>

@@ -9,12 +9,10 @@ import { Router } from '@angular/router';
 
 export class ServicesComponent {
 
-    constructor(private router: Router) {
-
-    }
-
     services:any = [];
     creating_service:boolean = false;
+
+    constructor(private router: Router) {}
 
     DisplayServicesForm() {
         this.router.navigate(['/home/services/create']);

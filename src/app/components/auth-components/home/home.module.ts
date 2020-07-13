@@ -3,6 +3,8 @@ import { CommonModule } from "@angular/common";
 import { HomeRoutes } from './home.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxLoadingModule } from 'ngx-loading';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
@@ -72,7 +74,9 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
         FormsModule,
         ReactiveFormsModule,
         NgxLoadingModule,
-        ToastrModule
+        ToastrModule,
+        BsDatepickerModule.forRoot(),
+        TimepickerModule.forRoot()
     ],
     exports: [
         HeaderComponent, 

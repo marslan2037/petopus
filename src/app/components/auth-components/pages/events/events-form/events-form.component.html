@@ -1,175 +1,167 @@
-<div class="create-Event rounded-10">
-    <div class="heading">
-        Create an Event
-     
-        <div class="search">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Status*</label>
-                    <select class="form-control">
-                        <option value="Private Event">Private Event</option>
-                        <option value="Public Event">Public Event</option>
-                    </select>
-                    <div>Event Type is required</div>
-                </div>
+<div class="rounded bg-white p-3 mb-2 custom-form-body">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h5 class="border-bottom pb-2 mb-4">
+        Create Event
+    </h5>
 
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Name</label>
-                        <input type="text" class="form-control">
-                        <div>Event Name is required</div>
-                    </div>
+    <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
+        <div class="form-group">
+            <label class="custom-label" for="status">Status:</label>
+            <select class="form-control" name="status" formControlName="status" [ngClass]="{'is-invalid': submitted && form.controls.status.value == 'undefined'}">
+                <option [value]="undefined">Select Value</option>
+                <option *ngFor="let status of event_status_list" [value]="status.value">{{status.name}}</option>
+            </select>
 
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Full Address</label>
-                        <input type="text" class="form-control">
-                        <div>Event Location is required</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Start Date</label>
-                        <input type="text" class="form-control start-date datepicker">
-                        <div>Start date is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">End Date</label>
-                        <input type="text" class="form-control end-date datepicker" placeholder="" >
-                        <div>Event Location is required</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Start Time</label>
-                        <input type="text"class="form-control start-time timepicker-12-hr hasWickedpicker">
-                        <div>Event Start Time is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">End Time</label>
-                        <input type="text" class="form-control end-time timepicker-12-hr hasWickedpicker">
-                        <div>Event Time End is required</div>
-                    </div>
-                </div>
-
-                <div class="price"><span>Event Price:</span></div>
-
-                <div class="row">
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
-                        <div class="row fee  ">Free:</div>
-                        <label class="container">
-                            <input type="checkbox" name="free">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
-                        <label for="exampleInputPassword1">Price:</label>
-                        <input type="number" class="form-control"> 
-                        <div>This Field is required</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Invite Followers:</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Event Discription:</label>
-                    <textarea name="description" style="width: 100%;"></textarea>
-                    <div class="help-block">Event Description is required</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> Event Avatar:</label>
-                    <div class="image-upload">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3">
-                                <label for="files">
-                                    <img src="assets/images/createanouncement/upload.png">
-                                </label>
-                                <input type="file"/>
-                            </div>
-
-                            <div class="col-lg-10 col-md-10 col-sm-9">
-                                <div class="text">Upload Your Image header</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> Event Pictures:</label>
-                    <div class="image-upload">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3">
-                                <label for="files">
-                                    <img src="assets/images/createanouncement/upload.png">
-                                </label>
-                            </div>
-
-                            <div class="col-lg-10 col-md-10 col-sm-9">
-                                <div class="text"> Upload Upto 10 Images Here</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="thumbnails_form">  
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album4.png" alt="img">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album23.png" alt="img">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>  
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>          
-                    </div>  
-                </div>
-
-                <button type="submit" class="btn btn-primary">Create Event</button>
-            </form>
+            <div *ngIf="submitted && form.controls.status.value == 'undefined'" class="invalid-feedback">Pet Type is required</div>
         </div>
-    </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="name">Name:</label>
+                <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name" [ngClass]="{'is-invalid': submitted && form.controls.name.errors}">
+
+                <div *ngIf="submitted && form.controls.name.errors" class="invalid-feedback">Name is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="address">Address:</label>
+                <input type="text" class="form-control" name="address" formControlName="address" placeholder="Address" [ngClass]="{'is-invalid': submitted && form.controls.address.errors}">
+
+                <div *ngIf="submitted && form.controls.address.errors" class="invalid-feedback">Address is required</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="start_date">Start Date:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="start_date" 
+                    formControlName="start_date" 
+                    placeholder="Start Date"
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.start_date.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.start_date.errors" class="invalid-feedback">Start Date is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="end_date">End Date:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="end_date" 
+                    formControlName="end_date" 
+                    placeholder="End Date" 
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.end_date.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.end_date.errors" class="invalid-feedback">End Date is required</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="start_time">Start Time:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="start_time" 
+                    formControlName="start_time" 
+                    placeholder="Start Time" 
+                    bsTimepicker 
+                    [ngClass]="{'is-invalid': submitted && form.controls.start_time.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.start_time.errors" class="invalid-feedback">Start Time is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="end_time">End Time:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="end_time" 
+                    formControlName="end_time" 
+                    placeholder="End Time" 
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'h:mm:ss a'}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.end_time.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.end_time.errors" class="invalid-feedback">End Time is required</div>
+            </div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col col-2 have-checkbox full-checkbox">
+                <label class="custom-label">Free:
+                    <input type="checkbox" name="free" formControlName="free" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col col-10">
+                <label class="custom-label" for="price">Price:</label>
+                <input type="text" class="form-control" name="price" formControlName="price" placeholder="Price" [ngClass]="{'is-invalid': submitted && form.controls.price.errors}">
+
+                <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="invite_followers">Invite Followers:</label>
+            <input type="text" class="form-control" name="invite_followers" formControlName="invite_followers">
+
+            <!-- <div *ngIf="submitted && form.controls.invite_followers.errors" class="invalid-feedback">Invite Followers is required</div> -->
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="event_description">Event Discription:</label>
+            <textarea rows="4" class="form-control" name="event_description" formControlName="event_description" [ngClass]="{'is-invalid': submitted && form.controls.event_description.errors}"></textarea>
+
+            <div *ngIf="submitted && form.controls.event_description.errors" class="invalid-feedback">Event Description is required</div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="event_avatar">Event Avatar:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.event_avatar.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" class="form-control" name="event_avatar" formControlName="event_avatar">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="event_avatar">Upload Your Image:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.event_avatar.errors" class="invalid-feedback">Event Avatar is required</div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="event_pictures">Event Pictures:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.event_pictures.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" multiple class="form-control" name="event_pictures" formControlName="event_pictures">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="event_pictures">Upload Upto 10 Images Here:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.event_pictures.errors" class="invalid-feedback">Event Pictures is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary custom-btn">Create Event</button>
+    </form>
 </div>
- 
 
 

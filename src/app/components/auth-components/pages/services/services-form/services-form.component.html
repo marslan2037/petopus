@@ -36,8 +36,6 @@
             <div class="col">
                 <label class="custom-label" for="price">Price:</label>
                 <input type="number" min="0" class="form-control" name="price" formControlName="price" placeholder="Price">
-            
-                <!-- <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div> -->
             </div>
 
             <div class="col">
@@ -46,8 +44,6 @@
                     <option [value]="undefined">Select Value</option>
                     <option *ngFor="let unit of pet_price_unit" [value]="unit.value">{{unit.name}}</option>
                 </select>
-    
-                <!-- <div *ngIf="submitted && form.controls.pet_price_unit.value == 'undefined'" class="invalid-feedback">Price Unit is required</div> -->
             </div>
         </div>
 
@@ -78,7 +74,7 @@
             <label class="custom-label" for="service_description">Service Discription:</label>
             <textarea rows="4" class="form-control" name="service_description" formControlName="service_description" [ngClass]="{'is-invalid': submitted && form.controls.service_description.errors}"></textarea>
 
-            <div *ngIf="submitted && form.controls.service_description.errors" class="invalid-feedback">Pet Type is required</div>
+            <div *ngIf="submitted && form.controls.service_description.errors" class="invalid-feedback">Service Discription is required</div>
         </div>
 
         <button type="submit" class="btn btn-primary custom-btn">Create Service</button>

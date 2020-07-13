@@ -42,6 +42,17 @@
                 }
             }
         }
+        .have-checkbox.full-checkbox {
+            label.custom-label {
+                padding-left: 0;
+            }
+            input[type="checkbox"] {
+                width: 100%;
+            }
+            span.check-mark {
+                bottom: 7px;
+            }
+        }
         .custom-btn {
             background-color: #ef5445;
             border: 1px solid #bf4337;
@@ -49,6 +60,30 @@
             transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
             &:active {
                 background-color: #ef5445 !important;
+            }
+        }
+        .file-input {
+            input[type="file"] {
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+            }
+            .file-input-box {
+                border: 2px #c0c0c0;
+                border-style: dashed;
+                .file-input-data {
+                    position: relative;
+                    height: 46px;
+                    img, label {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+            .file-input-box.is-invalid {
+                border-color: #dc3545;
             }
         }
     }

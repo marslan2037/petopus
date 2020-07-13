@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { HomeRoutes } from './home.routing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
+import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
 import { FeedsMenuComponent } from '../feeds-menu/feeds-menu.component';
@@ -65,7 +68,11 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
     ],
     imports: [
         HomeRoutes,
-        CommonModule
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxLoadingModule,
+        ToastrModule
     ],
     exports: [
         HeaderComponent, 

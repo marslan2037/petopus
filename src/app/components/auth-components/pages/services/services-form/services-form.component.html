@@ -1,82 +1,86 @@
-<div class="create-Services rounded-10">
-    <div class="heading">
-        Create Services
+<div class="rounded bg-white p-3 mb-2 custom-form-body">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h5 class="border-bottom pb-2 mb-4">
+        Create Service
+    </h5>
 
-        <div class="search">
+    <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
+        <div class="form-group">
+            <label class="custom-label" for="service_name">Service Name:</label>
+            <input type="text" class="form-control" name="service_name" formControlName="service_name" placeholder="Service Name" [ngClass]="{'is-invalid': submitted && form.controls.service_name.errors}">
 
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Service Name:</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" name="serviceName" />
-                    <div>Service Name is required</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Service Type:</label>
-                    <select class="form-control needs-validation" id="type" name="type">
-                        <option></option>
-                    </select>
-                    <div>Service Type is required</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Pet Type:</label>
-                    <select class="form-control" id="pettype" name="pettype">
-                        <option></option>
-                    </select>
-                    <div>Pet Type is required</div>
-                </div>
-
-                <div class="price"><span>Service Price:</span></div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                        <label for="exampleInputPassword1">Price:</label>
-                        <input type="number" class="form-control" name="price"/>
-                        <div>Price is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                        <label for="exampleInputPassword1">Per:</label>
-                        <select class="form-control" id="per" name="per">
-                            <option></option>
-                        </select>
-                        <div>Per is required</div>
-                    </div>
-                </div>
-
-                <div class="row mobile-font-size">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-4">
-                        <label class="container">Negotiable
-                            <input type="checkbox" name="negotiable"/>
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="col-lg-4 col-md-4 col-sm-5 col-5 mobile-sides-padding">
-                        <label class="container">Call for Price
-                            <input type="checkbox" name="call_for_price"/>
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-3 col-3">
-                        <label class="container">Free
-                            <input type="checkbox" name="free"/>
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Service Discription:</label>
-                    <textarea style="width: 100%;" name="description"></textarea>
-                    <div>Event Description is required</div>            
-                </div>
-
-                <button type="submit" class="btn btn-primary">Create Service</button>
-            </form>
-
+            <div *ngIf="submitted && form.controls.service_name.errors" class="invalid-feedback">Service Name is required</div>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="service_type">Service Type:</label>
+            <select class="form-control" name="service_type" formControlName="service_type" [ngClass]="{'is-invalid': submitted && form.controls.service_type.value == 'undefined'}">
+                <option [value]="undefined">Select Value</option>
+                <option *ngFor="let service of service_types" [value]="service.value">{{service.name}}</option>
+            </select>
+
+            <div *ngIf="submitted && form.controls.service_type.value == 'undefined'" class="invalid-feedback">Service Type is required</div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="pet_type">Pet Type:</label>
+            <select class="form-control" name="pet_type" formControlName="pet_type" [ngClass]="{'is-invalid': submitted && form.controls.pet_type.value == 'undefined'}">
+                <option [value]="undefined">Select Value</option>
+                <option *ngFor="let pet of pet_types" [value]="pet.value">{{pet.name}}</option>
+            </select>
+
+            <div *ngIf="submitted && form.controls.pet_type.value == 'undefined'" class="invalid-feedback">Pet Type is required</div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="price">Price:</label>
+                <input type="number" min="0" class="form-control" name="price" formControlName="price" placeholder="Price">
+            
+                <!-- <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div> -->
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="pet_price_unit">Unit:</label>
+                <select class="form-control" name="pet_price_unit" formControlName="pet_price_unit">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let unit of pet_price_unit" [value]="unit.value">{{unit.name}}</option>
+                </select>
+    
+                <!-- <div *ngIf="submitted && form.controls.pet_price_unit.value == 'undefined'" class="invalid-feedback">Price Unit is required</div> -->
+            </div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col have-checkbox">
+                <label class="custom-label">Negotiable
+                    <input type="checkbox" name="negotiable" formControlName="negotiable" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Call for Price
+                    <input type="checkbox" name="call_for_price" formControlName="call_for_price" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Free
+                    <input type="checkbox" name="free" formControlName="free" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="service_description">Service Discription:</label>
+            <textarea rows="4" class="form-control" name="service_description" formControlName="service_description" [ngClass]="{'is-invalid': submitted && form.controls.service_description.errors}"></textarea>
+
+            <div *ngIf="submitted && form.controls.service_description.errors" class="invalid-feedback">Pet Type is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary custom-btn">Create Service</button>
+    </form>
 </div>

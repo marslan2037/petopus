@@ -1,7 +1,5 @@
-import { throwError as observableThrowError } from 'rxjs';
-// import { catchError } from 'rxjs/operators/catchError';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
@@ -18,7 +16,6 @@ export class LoginService {
 
     isAuthenticated() {
         let token = sessionStorage.getItem('token') !== null && sessionStorage.getItem('token') !== 'undefined';
-        console.log(token)
         if (token) {
             return true;
         } else {

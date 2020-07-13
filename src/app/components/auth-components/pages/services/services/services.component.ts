@@ -17,7 +17,6 @@ export class ServicesComponent {
     creating_service:boolean = false;
 
     DisplayServicesForm() {
-        // this.creating_service = true;
         this.router.navigate(['/home/services/create']);
     }
 }

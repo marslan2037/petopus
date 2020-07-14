@@ -1,195 +1,215 @@
-<div class="create-petParks rounded-10">
-    <div class="heading">
-        Create an PetPark
-     
-        <div class="search">
-            <form>
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Park Name:</label>
-                        <input type="text" class="form-control">
-                        <div>Park Name is required</div>
-                    </div>
+<div class="rounded bg-white p-3 mb-2 custom-form-body">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h5 class="border-bottom pb-2 mb-4">
+        Create PetPark
+    </h5>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Location Type:</label>
-                        <select class="form-control">
-                            <option value="outdoor">Outdoor</option>
-                            <option value="indoor">Indoor</option>
-                        </select>
-                        <div>Type is required</div>
-                    </div>
-                </div>
+    <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="park_name">Park Name:</label>
+                <input type="text" class="form-control" name="park_name" formControlName="park_name" placeholder="Park Name" [ngClass]="{'is-invalid': submitted && form.controls.park_name.errors}">
 
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Status</label>
-                        <select class="form-control">
-                            <option value="private">Private</option>
-                            <option value="public">Public</option>
-                        </select>
-                        <div>Status is required</div>
-                    </div>
+                <div *ngIf="submitted && form.controls.park_name.errors" class="invalid-feedback">Park Name is required</div>
+            </div>
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Address:</label>
-                        <input type="text" class="form-control">
-                        <div>Park Address is required</div>
-                    </div>
-                </div>
+            <div class="col">
+                <label class="custom-label" for="location_type">Location Type:</label>
+                <select class="form-control" name="location_type" formControlName="location_type" [ngClass]="{'is-invalid': submitted && form.controls.location_type.value == 'undefined'}">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let status of location_status_list" [value]="status.value">{{status.name}}</option>
+                </select>
 
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Phone Number:</label>
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <input type="text" class="form-control">
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Park Opening Hours:</label>
-                        <input type="text" class="form-control start-time timepicker-12-hr hasWickedpicker">
-                        <div>Event Start Time is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Park Closing Hours:</label>
-                        <input type="text" class="form-control end-time timepicker-12-hr hasWickedpicker">
-                        <div>Event Time End is required</div>
-                    </div>
-                </div>
-
-                <div class="price"><span>Park Price:</span></div>
-
-                <div class="row">
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
-                        <div class="row fee  ">Free:</div>
-                        <label class="container">
-                            <input type="checkbox" name="free">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
-                        <label for="exampleInputPassword1">Price:</label>
-                        <input type="number" class="form-control"> 
-                    </div>
-
-                    <div class="form-group col-lg-5 col-md-5 col-sm-5">
-                        <label for="exampleInputPassword1">Per:</label>
-                        <select class="form-control">
-                            <option value="Hour" selected>Hour</option>
-                            <option value="Day">Day</option>
-                            <option value="Day">Week</option>
-                            <option value="Day">Month</option>
-                        </select>
-                        <div>This Field is required</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Park Discription:</label>
-                    <textarea style="width: 100%;" name="description"></textarea>
-                    <div>Event Description is required</div>            
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Park Avatar:</label>
-                    <div class="image-upload" >
-                        <label for="file-input">
-                        <img src="assets/images/createanouncement/upload.png">  </label>
-                        <input type="file" name="file" style="display:none"/><span>Upload Your Image Here</span>
-                    </div>
-                </div>
-
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Information of  Park Security:</label>
-                    <div class="row">
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-4  wdth-createpark" > 
-                            <label class="container">Parking
-                                <input type="checkbox" name="parking-box">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-4  wdth-createpark"> 
-                            <label class="container">Fancy
-                                <input type="checkbox" name="fancy-box">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-3  col-md-4 col-sm-4 col-4  wdth-createpark">
-                            <label class="container">Off Leash
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-4   wdth-createpark">
-                            <label class="container">Dog Area
-                                <input type="checkbox" class="checkmark">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div> 
-
-                        <div class="col-lg-2 col-md-4 col-sm-4 col-4  wdth-createpark"> 
-                            <label class="container">Bags
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-4  wdth-createpark wdth-createpark ">
-                            <label class="container">RestRoom
-                                <input type="checkbox" name="rest-room" ngModel="models.rest-room">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-3 col-md-4  col-sm-4 col-4 wdth-createpark ">
-                            <label class="container">Lighting
-                                <input type="checkbox" name="lighting" ngModel="models.lighting">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                        <div class="col-lg-4 col-md-5 col-sm-5 col-6 wdth-createpark"> 
-                            <label class="container">Water Situation
-                                <input type="checkbox" name="water-situation" ngModel="models.water-situation">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>  
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> Park Picture:</label>
-                    <div class="image-upload">
-                        <label for="file-input">
-                            <img src="assets/images/createanouncement/upload.png">
-                        </label>
-                        <input id="file-input" type="file"><span>Upload Your Image Here</span>
-                    </div>
-                </div>
-
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Create Event</button>
-            </form>
+                <div *ngIf="submitted && form.controls.location_type.value == 'undefined'" class="invalid-feedback">Location Type is required</div>
+            </div>
         </div>
-    </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="status">Status:</label>
+                <select class="form-control" name="status" formControlName="status" [ngClass]="{'is-invalid': submitted && form.controls.status.value == 'undefined'}">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let status of event_status_list" [value]="status.value">{{status.name}}</option>
+                </select>
+
+                <div *ngIf="submitted && form.controls.status.value == 'undefined'" class="invalid-feedback">Status is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="address">Address:</label>
+                <input type="text" class="form-control" name="address" formControlName="address" placeholder="Address" [ngClass]="{'is-invalid': submitted && form.controls.address.errors}">
+
+                <div *ngIf="submitted && form.controls.address.errors" class="invalid-feedback">Address is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="phone_number">Phone Number:</label>
+            <input type="text" class="form-control" name="phone_number" formControlName="phone_number" placeholder="Phone Number" [ngClass]="{'is-invalid': submitted && form.controls.phone_number.errors}">
+
+            <div *ngIf="submitted && form.controls.phone_number.errors" class="invalid-feedback">Phone Number is required</div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="opening_hour">Park Opening Hours:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="opening_hour" 
+                    formControlName="opening_hour" 
+                    placeholder="Park Opening Hours" 
+                    bsTimepicker 
+                    [ngClass]="{'is-invalid': submitted && form.controls.opening_hour.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.opening_hour.errors" class="invalid-feedback">Park Opening Hours is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="closing_hour">Park Closing Hours:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="closing_hour" 
+                    formControlName="closing_hour" 
+                    placeholder="Park Closing Hours" 
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'h:mm:ss a', isAnimated: true}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.closing_hour.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.closing_hour.errors" class="invalid-feedback">Park Closing Hours is required</div>
+            </div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col col-2 have-checkbox full-checkbox">
+                <label class="custom-label">Free:
+                    <input type="checkbox" name="free" formControlName="free" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col col-5">
+                <label class="custom-label" for="price">Price:</label>
+                <input type="text" class="form-control" name="price" formControlName="price" placeholder="Price" [ngClass]="{'is-invalid': submitted && form.controls.price.errors}">
+
+                <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div>
+            </div>
+
+            <div class="col col-5">
+                <label class="custom-label" for="pet_price_unit">Unit:</label>
+                <select class="form-control" name="pet_price_unit" formControlName="pet_price_unit">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let unit of pet_price_unit" [value]="unit.value">{{unit.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="park_description">Park Discription:</label>
+            <textarea rows="4" class="form-control" name="park_description" formControlName="park_description" [ngClass]="{'is-invalid': submitted && form.controls.park_description.errors}"></textarea>
+
+            <div *ngIf="submitted && form.controls.park_description.errors" class="invalid-feedback">Park Description is required</div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="park_avatar">Park Avatar:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.park_avatar.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" class="form-control" name="park_avatar" formControlName="park_avatar">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="park_avatar">Upload Your Image:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.park_avatar.errors" class="invalid-feedback">Park Avatar is required</div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col have-checkbox">
+                <label class="custom-label">Parking
+                    <input type="checkbox" name="parking" formControlName="parking" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Fancy
+                    <input type="checkbox" name="fancy" formControlName="fancy" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Off Leash
+                    <input type="checkbox" name="off_leash" formControlName="off_leash" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col have-checkbox">
+                <label class="custom-label">Dog Area
+                    <input type="checkbox" name="dog_area" formControlName="dog_area" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Bags
+                    <input type="checkbox" name="bags" formControlName="bags" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">RestRoom
+                    <input type="checkbox" name="rest_room" formControlName="rest_room" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col col-4 have-checkbox">
+                <label class="custom-label">Lighting
+                    <input type="checkbox" name="lighting" formControlName="lighting" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col col-4 have-checkbox">
+                <label class="custom-label">Water Situation
+                    <input type="checkbox" name="water_situation" formControlName="water_situation" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="park_pictures">Park Pictures:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.park_pictures.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" multiple class="form-control" name="park_pictures" formControlName="park_pictures">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="park_pictures">Upload Upto 10 Images Here:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.park_pictures.errors" class="invalid-feedback">Park Pictures is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary custom-btn">Create Event</button>
+    </form>
 </div>
+
+

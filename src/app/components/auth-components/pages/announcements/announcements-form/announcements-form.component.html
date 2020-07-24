@@ -1,193 +1,127 @@
-<div class="create-announcement rounded-10">
-    <div class="heading">
-        Announcement Posting
-     
-        <div class="search">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Professional / Company Name:</label>
-                    <input type="text" class="form-control">
-                    <div>Name is required</div>
-                </div>
+<div class="rounded bg-white p-3 mb-2 custom-form-body">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h5 class="border-bottom pb-2 mb-4">
+        Create Announcement
+    </h5>
 
-                <div class="row" style="display: none;">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Province:</label>
-                        <input type="text" class="form-control">
-                        <div>Province is required</div>
-                    </div>
+    <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
+        <div class="form-group">
+            <label class="custom-label" for="company_name">Company Name:</label>
+            <input type="text" class="form-control" name="company_name" formControlName="company_name" placeholder="Company Name" [ngClass]="{'is-invalid': submitted && form.controls.company_name.errors}">
 
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">City:</label>
-                        <input type="text" class="form-control">
-                        <div>City is required</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12" style="display: none;">
-                        <label for="exampleInputPassword1">Postal:</label>
-                        <input type="text" class="form-control">
-                        <div>Postal Code is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Province:</label>
-                        <input type="text" class="form-control">
-                        <div>Province is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
-                        <label for="exampleInputPassword1">Service Type:</label>
-                        <select class="form-control">
-                            <option [value]="service.value" *ngFor = "let service of Services_Array">{{service.name}}</option>
-                        </select>
-                        <div>Services Types is required</div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-12">
-                        <label for="petType">Pet Type:</label>
-                        <select class="form-control">
-                            <option [value]="pet.value" *ngFor = "let pet of Pets_Array">{{pet.name}}</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1"> Upload Avatar:</label>
-                    <div class="image-upload">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3">
-                                <label for="file-input" (click)="fileinput.click()">
-                                <img src="assets/images/createanouncement/upload.png">  </label>
-                                <input id="file-input" type="file" name="file" style="display:none" #fileinput/>
-                            </div>
-
-                            <div class="col-lg-10 col-md-10 col-sm-9">
-                                <div class="text">Upload Announcement Avatar Image</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                    </div>
-                </div>
-
-                <div class="price"><span>Service Price:</span></div>
-
-                <div class="row">
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2">
-                        <div class="row fee  ">Free:</div>
-                        <label class="container">
-                            <input type="checkbox" name="free">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2" *ngIf="free != true">
-                        <div class="row fee">Negotiable:</div>
-                            <label class="container">
-                            <input type="checkbox" name="negotiable">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group col-lg-2 col-md-2 col-sm-2" *ngIf="free != true">
-                        <div class="row fee  ">Call for price:</div>
-                        <label class="container">
-                            <input type="checkbox" name="call_for_price">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group col-lg-3 col-md-3 col-sm-5" *ngIf="free != true">
-                        <label for="exampleInputPassword1">Price:</label>
-                        <input type="number" class="form-control"> 
-                        <div>Price is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-3 col-md-3 col-sm-5" *ngIf="free != true">
-                        <label for="exampleInputPassword1">Per:</label>
-                        <select class="form-control">
-                            <option [value]="per.value" *ngFor = "let per of per_array">{{per.name}}</option>
-                        </select>
-                        <div>Per is required</div>
-                    </div>
-                </div>
-  
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Service Discription:</label>
-                    <textarea style="width: 100%;" name="description"></textarea>
-                    <div>Service Description is required</div>            
-                </div>
-
-                <div class="form-group" >
-                    <label for="exampleInputPassword1"> Upload Avatar:</label>
-                    <div class="image-upload">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3">
-                                <label for="file-input">
-                                    <img src="assets/images/createanouncement/upload.png">
-                                </label>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-9" >
-                                <div class="text">  Upload Announcement Avatar Image</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="thumbnails_form">  
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album4.png" alt="img">
-                            
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album23.png" alt="img">
-                            
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>  
-                        <div class="col-lg-3 col-md-6">
-                            <div class="left_forms ">
-                                <div class="images">
-                                    <img class="img1 rounded" src="assets/images/Album/album1.png" alt="img">
-                                </div>
-                            </div>
-                        </div>          
-                    </div>  
-                </div>
-
-                <button type="submit" class="btn btn-primary">Create Announce</button>
-            </form>
+            <div *ngIf="submitted && form.controls.company_name.errors" class="invalid-feedback">Company Name is required</div>
         </div>
-    </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="province">Province:</label>
+                <input type="text" class="form-control" name="province" formControlName="province" placeholder="Province" [ngClass]="{'is-invalid': submitted && form.controls.province.errors}">
+
+                <div *ngIf="submitted && form.controls.province.errors" class="invalid-feedback">Province is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="service_type">Service Type:</label>
+                <select class="form-control" name="service_type" formControlName="service_type">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let service of service_type_list" [value]="service.value">{{service.name}}</option>
+                </select>
+
+                <div *ngIf="submitted && form.controls.service_type.value == 'undefined'" class="invalid-feedback">Service Type is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="pet_type">Pet Type:</label>
+            <select class="form-control" name="pet_type" formControlName="pet_type">
+                <option [value]="undefined">Select Value</option>
+                <option *ngFor="let pet of pet_type_list" [value]="pet.value">{{pet.name}}</option>
+            </select>
+
+            <div *ngIf="submitted && form.controls.pet_type.value == 'undefined'" class="invalid-feedback">Pet Type is required</div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="anouncement_avatar">Announcement Avatar:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.anouncement_avatar.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" class="form-control" name="anouncement_avatar" formControlName="anouncement_avatar">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="anouncement_avatar">Upload Your Image:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.anouncement_avatar.errors" class="invalid-feedback">Announcement Avatar is required</div>
+        </div>
+
+        <div class="form-group row pt-2">
+            <div class="col have-checkbox">
+                <label class="custom-label">Free
+                    <input type="checkbox" name="free" formControlName="free" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Negotiable
+                    <input type="checkbox" name="negotiable" formControlName="negotiable" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+
+            <div class="col have-checkbox">
+                <label class="custom-label">Call for Price
+                    <input type="checkbox" name="call_for_price" formControlName="call_for_price" />
+                    <span class="check-mark"><i class="fa fa-check"></i></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="price">Price:</label>
+                <input type="text" class="form-control" name="price" formControlName="price" placeholder="Price" [ngClass]="{'is-invalid': submitted && form.controls.price.errors}">
+
+                <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="price_unit">Price Unit:</label>
+                <select class="form-control" name="price_unit" formControlName="price_unit">
+                    <option [value]="undefined">Select Value</option>
+                    <option *ngFor="let unit of price_unit_list" [value]="unit.value">{{unit.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="announcement_description">Announcement Discription:</label>
+            <textarea rows="4" class="form-control" name="announcement_description" formControlName="announcement_description" [ngClass]="{'is-invalid': submitted && form.controls.announcement_description.errors}"></textarea>
+
+            <div *ngIf="submitted && form.controls.announcement_description.errors" class="invalid-feedback">Announcement Description is required</div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="announcement_pictures">Announcements Pictures:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.announcement_pictures.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" multiple class="form-control" name="announcement_pictures" formControlName="announcement_pictures">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="announcement_pictures">Upload Upto 10 Images Here:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.announcement_pictures.errors" class="invalid-feedback">Announcements Pictures are required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary custom-btn">Create Announcement</button>
+    </form>
 </div>
+
+

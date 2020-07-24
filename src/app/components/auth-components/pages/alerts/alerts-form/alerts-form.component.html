@@ -1,118 +1,91 @@
-<div class="create-Event rounded-10">
-    <div class="heading">
-        Create Alert
+<div class="rounded bg-white p-3 mb-2 custom-form-body">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <h5 class="border-bottom pb-2 mb-4">
+        Create Album
+    </h5>
 
-        <div class="search">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Alert Type</label>
-                    <select
-                        class="form-control"
-                        id="type"
-                        name="alert_type"
-                    >
-                        <option>Lost Pet</option>
-                        <option>Found Pet</option>
-                    </select>
-                    <div>Alert Type is required</div>
-                </div>
+    <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
+        <div class="form-group">
+            <label class="custom-label" for="alert_type">Alert Type:</label>
+            <select class="form-control" name="alert_type" formControlName="alert_type" [ngClass]="{'is-invalid': submitted && form.controls.alert_type.value == 'undefined'}">
+                <option [value]="undefined">Select Value</option>
+                <option *ngFor="let alert of alert_type_list" [value]="alert.value">{{alert.name}}</option>
+            </select>
 
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Location</label>
-                    <input
-                        type="text"
-                        id=""
-                        class="form-control"
-                        name="google_address"
-                        placeholder=""
-                    />
-                    <input
-                        type="hidden"
-                        class=""
-                        name="location"
-                        required
-                    />
-                    <input
-                        type="hidden"
-                        class=""
-                        name="lat"
-                    />
-                    <input
-                        type="hidden"
-                        class=""
-                        name="long"
-                    />
-                    <div>Location is required</div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Date</label>
-                        <input
-                            type="text"
-                            class="form-control alert_date datepicker"
-                        />
-                        <input
-                            type="hidden"
-                            class="alert_date-original"
-                            name="alert_date"
-                        />
-                        <div>Alert date is required</div>
-                    </div>
-
-                    <div class="form-group col-lg-6 col-md-12 col-sm-12">
-                        <label for="exampleInputPassword1">Time</label>
-                        <input
-                            type="text"
-                            id="timepicker-12-hr"
-                            class="form-control alert_time timepicker-12-hr hasWickedpicker"
-                        />
-                        <input
-                            type="hidden"
-                            class="alert_time-original"
-                            name="alert_time"
-                        />
-                        <div>Alert Time is required</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Pet Images:</label>
-                    <div class="image-upload">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-3">
-                                <label for="file-input">
-                                <img src="assets/images//createanouncement/upload.png" />
-                                </label>
-                            </div>
-                            <div class="col-lg-10 col-md-10 col-sm-9">
-                                <div class="text">Upload Pet Images</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group link">
-                    <label for="exampleInputPassword1">Profile Link: </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder=""
-                        name="pet_profile"
-                    />
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Discribe situation:</label>
-                    <textarea
-                        style="width: 100%;"
-                        name="description"
-                    >
-                    </textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Create Alert</button>
-            </form>
+            <div *ngIf="submitted && form.controls.alert_type.value == 'undefined'" class="invalid-feedback">Alert Type is required</div>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="location">Location:</label>
+            <input type="text" class="form-control" name="location" formControlName="location" placeholder="Location" [ngClass]="{'is-invalid': submitted && form.controls.location.errors}">
+
+            <div *ngIf="submitted && form.controls.location.errors" class="invalid-feedback">Location is required</div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col">
+                <label class="custom-label" for="date">Date:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="date" 
+                    formControlName="date" 
+                    placeholder="Date"
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.date.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.date.errors" class="invalid-feedback">Date is required</div>
+            </div>
+
+            <div class="col">
+                <label class="custom-label" for="time">Time:</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="time" 
+                    formControlName="time" 
+                    placeholder="Time" 
+                    bsDatepicker 
+                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [ngClass]="{'is-invalid': submitted && form.controls.time.errors}"
+                >
+
+                <div *ngIf="submitted && form.controls.time.errors" class="invalid-feedback">Time is required</div>
+            </div>
+        </div>
+
+        <div class="form-group file-input">
+            <label class="custom-label" for="pet_avatar">Pet Image:</label>
+            <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.pet_avatar.errors}">
+                <div class="col col-3 file-input-data">
+                    <img src="assets/images/createanouncement/upload.png" alt="" />
+                    <input type="file" class="form-control" name="pet_avatar" formControlName="pet_avatar">
+                </div>
+
+                <div class="col col-9 file-input-data">
+                    <label class="custom-label" for="pet_avatar">Upload Your Image:</label>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && form.controls.event_avatar.errors" class="invalid-feedback">Pet Image is required</div>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="profile_link">Profile Link:</label>
+            <input type="text" class="form-control" name="profile_link" formControlName="profile_link">
+
+            <!-- <div *ngIf="submitted && form.controls.profile_link.errors" class="invalid-feedback">Profile Link is required</div> -->
+        </div>
+
+        <div class="form-group">
+            <label class="custom-label" for="detail_situation">Describe Situation:</label>
+            <textarea rows="4" class="form-control" name="detail_situation" formControlName="detail_situation" [ngClass]="{'is-invalid': submitted && form.controls.detail_situation.errors}"></textarea>
+
+            <div *ngIf="submitted && form.controls.detail_situation.errors" class="invalid-feedback">Describe Situation is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary custom-btn">Create Alert</button>
+    </form>
 </div>

@@ -11,14 +11,14 @@ export class HeaderComponent {
     user : [];
     profilePicture : String;
     userdata : [];
-    owner_profile:boolean = false;
+    role_id:any;
     nick_name:any;
 
     constructor() {}
 
     ngOnInit() {
         this.nick_name = sessionStorage.getItem('nick_name');
-        this.owner_profile = (sessionStorage.getItem('role') == '1') ? true : false;
+        this.role_id = sessionStorage.getItem('role_id');
     }
 }
   

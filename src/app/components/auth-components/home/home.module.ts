@@ -11,6 +11,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FeedsMenuComponent } from '../feeds-menu/feeds-menu.component';
 import { LeftMenuComponent } from '../left-menu/left-menu.component';
 import { AboutComponent } from './../pages/about/about.component';
+import { ProfessionalsComponent } from './../pages/professionals/professionals.component';
 import { ServicesComponent } from './../pages/services/services/services.component';
 import { ServicesFormComponent } from './../pages/services/services-form/services-form.component';
 import { AlertsComponent } from './../pages/alerts/alerts/alerts.component';
@@ -44,6 +45,7 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
         LeftMenuComponent,
         RightMenuComponent,
         AboutComponent,
+        ProfessionalsComponent,
         ServicesComponent,
         ServicesFormComponent,
         AlertsComponent,

@@ -71,10 +71,11 @@ export class LoginComponent {
                 this.submitted = false;
                 this.toastr.success('Login Successfully');
     
+                sessionStorage.setItem('account_id', response['account_id']);
                 sessionStorage.setItem('user_id', response['user_id']);
                 sessionStorage.setItem('token', response["authentication_token"]);
                 sessionStorage.setItem('nick_name', response["nickname"]);
-                sessionStorage.setItem('role', (response["role_id"] == "Professional") ? '2' : '1');
+                sessionStorage.setItem('role_id', (response["role_id"] == "Professional") ? '1' : '2');
     
                 // this.router.navigate(['/home']);
                 this.router.navigateByUrl(this.returnUrl);
@@ -85,9 +86,9 @@ export class LoginComponent {
                 if(error.status == 401) {
                     this.toastr.error(error.error.message, "Authentication Error");
                 }
-                else{
+                else {
                     this.toastr.error("Network Faild! Unable to Connect to Server", "Network Error");
-                }
+                }l
             })
         }
     }

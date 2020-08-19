@@ -18,6 +18,11 @@ export class ParksComponent {
     url:any;
     events_formated:any = [];
     creating_park:boolean = false;
+    role_id:any;
+
+    ngOnInit() {
+        this.role_id = sessionStorage.getItem('role_id');
+    }
 
     DisplayEventForm() {
         // this.creating_park = true;

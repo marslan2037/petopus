@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiServicesService } from '../../../../../services/api-services/api-services.service';
+import { ApiServicesService } from '../../../../services/api-services/api-services.service';
 
 @Component({
-  selector: 'services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss']
+  selector: 'professionals',
+  templateUrl: './professionals.component.html',
+  styleUrls: ['./professionals.component.scss']
 })
 
-export class ServicesComponent {
+export class ProfessionalsComponent {
 
     services:any = [];
     creating_service:boolean = false;

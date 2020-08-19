@@ -21,6 +21,11 @@ export class AnnouncementsComponent {
     free:any;
     events_formated:any = [];
     creating_announcement:boolean = false;
+    role_id:any;
+
+    ngOnInit() {
+        this.role_id = sessionStorage.getItem('role_id');
+    }
 
     DisplayAnnouncementForm() {
         // this.creating_announcement = true;

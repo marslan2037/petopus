@@ -34,13 +34,13 @@
                     <li><a routerLink="friends"><img src="assets/images/8_66.png">Friends</a></li>
                     <li><a routerLink="chat"><img src="assets/images/9_66.jpg">Messages</a></li>
                     <li><a routerLink="groups"><img src="assets/images/11_66.png">Groups</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="events"><img src="assets/images/10_66.png">Events</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="parks"><img src="assets/images/alert-display-Distance.png">Parks</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="announcements"><img src="assets/images/7_03.png">Announce</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="publish-articles"><img src="assets/images/7_03.png">Publish Articles</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="appointments"><img src="assets/images/7_03.png">Appointment</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="breeders"><img src="assets/images/8_66.png">Breeder</a></li>
-                    <li *ngIf="!owner_profile"><a routerLink="advirtisement"><img src="assets/images/8_66.png">Advertisement</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="events"><img src="assets/images/10_66.png">Events</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="parks"><img src="assets/images/alert-display-Distance.png">Parks</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="announcements"><img src="assets/images/7_03.png">Announce</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="publish-articles"><img src="assets/images/7_03.png">Publish Articles</a></li>
+                    <li *ngIf="role_id == '1'"><a routerLink="appointments"><img src="assets/images/7_03.png">Appointment</a></li>
+                    <li *ngIf="role_id == '1'"><a routerLink="breeders"><img src="assets/images/8_66.png">Breeder</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="advirtisement"><img src="assets/images/8_66.png">Advertisement</a></li>
                     <li><a routerLink="feedback"><img src="assets/images/12_66.png" style=" margin-left: -5px;">Feedback</a></li>
                     <li><a routerLink="admin-chat"><img src="assets/images/13_66.png">Admin Message</a></li>
                 </ul>

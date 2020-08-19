@@ -13,9 +13,15 @@ export class EventsComponent {
 
     }
 
+    role_id:any;
     services:any = [];
     events_formated:any = [];
     creating_event:boolean = false;
+
+    ngOnInit() {
+        this.role_id = sessionStorage.getItem('role_id');
+        console.log(this.role_id)
+    }
 
     DisplayEventForm() {
         // this.creating_event = true;

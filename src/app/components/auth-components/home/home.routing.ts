@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { AboutComponent } from './../pages/about/about.component';
+import { ProfessionalsComponent } from './../pages/professionals/professionals.component';
 import { ServicesComponent } from './../pages/services/services/services.component';
 import { ServicesFormComponent } from './../pages/services/services-form/services-form.component';
 import { NewsFeedComponent } from './../pages/news-feed/news-feed.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
         children: [
             { path: '', component: NewsFeedComponent, canActivate: [AuthService] },
             { path: 'about', component: AboutComponent, canActivate: [AuthService] },
+            { path: 'professionals', component: ProfessionalsComponent, canActivate: [AuthService] },
 
             { path: 'services', component: ServicesComponent, canActivate: [AuthService] },
             { path: 'services/create', component: ServicesFormComponent, canActivate: [AuthService] },

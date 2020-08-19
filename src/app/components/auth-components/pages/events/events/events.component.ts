@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiServicesService } from '../../../../../services/api-services/api-services.service';
 
 @Component({
   selector: 'events',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 
 export class EventsComponent {
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private apiService: ApiServicesService) {
 
     }
 
@@ -21,10 +22,17 @@ export class EventsComponent {
     ngOnInit() {
         this.role_id = sessionStorage.getItem('role_id');
         console.log(this.role_id)
+
+        this.GetAllEvents();
     }
 
     DisplayEventForm() {
-        // this.creating_event = true;
         this.router.navigate(['/home/events/create']);
+    }
+
+    GetAllEvents() {
+        this.apiService.GetAllEvents().subscribe((response => {
+            console.log(response);
+        }))
     }
 }

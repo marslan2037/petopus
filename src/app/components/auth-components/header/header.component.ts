@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'p-header',
@@ -12,13 +13,18 @@ export class HeaderComponent {
     profilePicture : String;
     userdata : [];
     role_id:any;
-    nick_name:any;
+    full_name:any;
 
-    constructor() {}
+    constructor(private router: Router) {}
 
     ngOnInit() {
-        this.nick_name = sessionStorage.getItem('nick_name');
+        this.full_name = sessionStorage.getItem('full_name');
         this.role_id = sessionStorage.getItem('role_id');
+    }
+
+    Logout() {
+        sessionStorage.clear();
+        this.router.navigate(["/"]);
     }
 }
   

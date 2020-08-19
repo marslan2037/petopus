@@ -74,8 +74,13 @@ export class LoginComponent {
                 sessionStorage.setItem('account_id', response['account_id']);
                 sessionStorage.setItem('user_id', response['user_id']);
                 sessionStorage.setItem('token', response["authentication_token"]);
-                sessionStorage.setItem('nick_name', response["nickname"]);
-                sessionStorage.setItem('role_id', (response["role_id"] == "Professional") ? '1' : '2');
+                sessionStorage.setItem('full_name', response["full_name"]);
+                sessionStorage.setItem('role_id', (response["role"] == "Professional") ? '1' : '2');
+
+                if(response["role"] == "Professional") {
+                    sessionStorage.setItem('company_name', response["professional"].company_name);
+                    sessionStorage.setItem('professional_id', response["professional"].professional_id);
+                }
     
                 // this.router.navigate(['/home']);
                 this.router.navigateByUrl(this.returnUrl);
@@ -88,7 +93,7 @@ export class LoginComponent {
                 }
                 else {
                     this.toastr.error("Network Faild! Unable to Connect to Server", "Network Error");
-                }l
+                }
             })
         }
     }

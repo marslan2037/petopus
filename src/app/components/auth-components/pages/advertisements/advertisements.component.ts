@@ -19,7 +19,7 @@ export class AdvertisementsComponent {
     // constructor() {}
 
     // ngOnInit() {
-    //     this.nick_name = sessionStorage.getItem('nick_name');
+    //     this.nick_name = sessionStorage.getItem('full_name');
     //     this.owner_profile = (sessionStorage.getItem('role') == '1') ? true : false;
     // }
 }

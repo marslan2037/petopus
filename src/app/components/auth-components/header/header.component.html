@@ -106,10 +106,11 @@
                             <img class="status" src="assets/images/online_02.png">
                         </li>
                         <li>
-                            <select>
-                                <!-- <option>{{this.user["nick_name"]}}</option> -->
-                                <option>{{nick_name}}</option>
-                            </select>
+                            <span>{{full_name}}</span>
+                            <ul class="inner-menu">
+                                <li>{{full_name}}</li>
+                                <li (click)="Logout()">Logout</li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

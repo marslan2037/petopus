@@ -16,3 +16,44 @@
     flex: 0 0 41.666667%;
     max-width: 41.666667%;
 }
+
+ul {
+    li {
+        span {
+            display: inline-block;
+            line-height: 48px;
+            width: 16ch;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: #fff;
+            cursor: pointer;
+        }
+        ul.inner-menu {
+            position: absolute;
+            display: none;
+            background-color: #fff;
+            li {
+                cursor: pointer;
+                float: none;
+                padding: 0 10px;
+                margin: 0 0 6px;
+                line-height: 30px;
+                &:last-child {
+                    margin: 0;
+                }
+                &:hover {
+                    background-color: #f2f2f2;
+                }
+            }
+        }
+        &:hover {
+            ul.inner-menu {
+                display: block;
+                z-index: 10;
+                padding: 8px 0;
+                width: 200px;
+            }
+        }
+    }
+}

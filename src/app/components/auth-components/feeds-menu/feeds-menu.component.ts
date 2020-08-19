@@ -31,7 +31,7 @@ export class FeedsMenuComponent {
     constructor(private router: Router) {}
 
     ngOnInit() {
-        this.nick_name = sessionStorage.getItem('nick_name');
+        this.nick_name = sessionStorage.getItem('full_name');
         this.role_id = sessionStorage.getItem('role_id');
         
         this.GetActiveMenu();

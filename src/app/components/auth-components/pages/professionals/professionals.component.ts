@@ -12,8 +12,13 @@ export class ProfessionalsComponent {
 
     services:any = [];
     creating_service:boolean = false;
+    role_id:any;
 
     constructor(private router: Router, private apiServicesService: ApiServicesService) {}
+
+    ngOnInit() {
+        this.role_id = sessionStorage.getItem("role_id");
+    }
 
     DisplayServicesForm() {
         this.router.navigate(['/home/services/create']);

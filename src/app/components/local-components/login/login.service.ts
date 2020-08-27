@@ -6,6 +6,7 @@ export class LoginService {
 
     // url:any = 'https://petopus-app.herokuapp.com';
     url:any = "http://35.232.243.88";
+    // url:any = "https://f9bb406d18e2.ngrok.io";
     
     constructor(private http: HttpClient) {  
         

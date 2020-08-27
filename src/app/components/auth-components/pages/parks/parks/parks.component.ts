@@ -33,7 +33,7 @@ export class ParksComponent {
     }
 
     GetAllParks() {
-        this.apiService.GetAllparks().subscribe((response => {
+        this.apiService.GetAllParks().subscribe((response => {
             console.log(response);
         }))
     }

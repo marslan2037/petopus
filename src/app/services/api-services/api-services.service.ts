@@ -1,7 +1,7 @@
 import { catchError } from 'rxjs/internal/operators/catchError';
-import {throwError as observableThrowError} from 'rxjs';
+import {throwError as observableThrowError, Observable} from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest, HttpEvent } from '@angular/common/http';
 
 @Injectable()
 export class ApiServicesService {
@@ -39,13 +39,10 @@ export class ApiServicesService {
     }
 
     /* Create PROFESSIONAL EVENT */
-    CreateProfessionalEvent() {
-        let user_id = sessionStorage.getItem("user_id");
+    CreateProfessionalEvent(data:any) {
         let professional_id = sessionStorage.getItem("professional_id");
-        let token = sessionStorage.getItem("token");
-
-        let url = this.url+'/api/v1/users/'+user_id+'/professionals/'+professional_id+'/activities?authentication_token='+token;
-        return this.http.get(url).pipe(
+        let url = this.url+'/api/v1/professionals/'+professional_id+'/activity_create';
+        return this.http.post(url, data).pipe(
             catchError(error => {
                 return observableThrowError(error)
             }));
@@ -86,5 +83,36 @@ export class ApiServicesService {
             catchError(error => {
                 return observableThrowError(error)
             }));
+    }
+
+
+    UploadFile(
+            file: File,
+            picture_ancestor,
+            picture_ancestor_id,
+            authentication_token, 
+            isprofile: boolean, 
+            isCover: boolean
+        ): Observable<HttpEvent<any>> {
+
+        let formData = new FormData();
+
+        formData.append('authentication_token', authentication_token);
+        formData.append('picture_ancestor', picture_ancestor);
+        formData.append('picture_ancestor_id', picture_ancestor_id);
+        formData.append('picture[image]', file);
+        
+        if(isprofile) formData.append('picture[is_profile]', "true");
+        if(isCover) formData.append('picture[is_cover]', "true");
+
+        let params = new HttpParams();
+    
+        const options = {
+            params: params,
+            reportProgress: true,
+        };
+        let url = this.url+'/api/v1/pictures';
+        const req = new HttpRequest('POST', url, formData, options);
+        return this.http.request(req);
     }
 }

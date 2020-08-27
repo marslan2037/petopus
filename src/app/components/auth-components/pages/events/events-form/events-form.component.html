@@ -41,7 +41,7 @@
                     formControlName="start_date" 
                     placeholder="Start Date"
                     bsDatepicker 
-                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [bsConfig]="{dateInputFormat: 'DD-MM-YYYY'}"
                     [ngClass]="{'is-invalid': submitted && form.controls.start_date.errors}"
                 >
 
@@ -57,7 +57,7 @@
                     formControlName="end_date" 
                     placeholder="End Date" 
                     bsDatepicker 
-                    [bsConfig]="{dateInputFormat: 'YYYY-MM-DD'}" 
+                    [bsConfig]="{dateInputFormat: 'DD-MM-YYYY'}" 
                     [ngClass]="{'is-invalid': submitted && form.controls.end_date.errors}"
                 >
 
@@ -68,7 +68,7 @@
         <div class="form-group row">
             <div class="col">
                 <label class="custom-label" for="start_time">Start Time:</label>
-                <input 
+                <!-- <input 
                     type="text" 
                     class="form-control" 
                     name="start_time" 
@@ -76,14 +76,15 @@
                     placeholder="Start Time" 
                     bsTimepicker 
                     [ngClass]="{'is-invalid': submitted && form.controls.start_time.errors}"
-                >
+                > -->
+                <timepicker formControlName="start_time"></timepicker>
 
                 <div *ngIf="submitted && form.controls.start_time.errors" class="invalid-feedback">Start Time is required</div>
             </div>
 
             <div class="col">
                 <label class="custom-label" for="end_time">End Time:</label>
-                <input 
+                <!-- <input 
                     type="text" 
                     class="form-control" 
                     name="end_time" 
@@ -92,7 +93,8 @@
                     bsDatepicker 
                     [bsConfig]="{dateInputFormat: 'h:mm:ss a', isAnimated: true}" 
                     [ngClass]="{'is-invalid': submitted && form.controls.end_time.errors}"
-                >
+                > -->
+                <timepicker formControlName="end_time"></timepicker>
 
                 <div *ngIf="submitted && form.controls.end_time.errors" class="invalid-feedback">End Time is required</div>
             </div>
@@ -133,7 +135,13 @@
             <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.event_avatar.errors}">
                 <div class="col col-3 file-input-data">
                     <img src="assets/images/createanouncement/upload.png" alt="" />
-                    <input type="file" class="form-control" name="event_avatar" formControlName="event_avatar">
+                    <input 
+                        type="file" 
+                        class="form-control" 
+                        name="event_avatar" 
+                        formControlName="event_avatar"
+                        (change)="onFileChange($event)"
+                    >
                 </div>
 
                 <div class="col col-9 file-input-data">

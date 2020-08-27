@@ -31,7 +31,7 @@ export class EventsComponent {
     }
 
     GetAllEvents() {
-        this.apiService.GetAllEvents().subscribe((response => {
+        this.apiService.GetAllProfessionalEvents().subscribe((response => {
             console.log(response);
         }))
     }

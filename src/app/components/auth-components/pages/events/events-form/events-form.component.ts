@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
 
 @Component({
@@ -20,7 +21,11 @@ export class EventsFormComponent {
         {id: 2, name: 'Public Event', value: 'public_event'},
     ]
 
-    constructor(private formBuilder: FormBuilder, private apiServicesService: ApiServicesService) {}
+    constructor(
+            private formBuilder: FormBuilder,
+            private toastr: ToastrService, 
+            private apiServicesService: ApiServicesService
+        ) {}
 
     ngOnInit() {
         this.CreateForm();
@@ -75,7 +80,7 @@ export class EventsFormComponent {
                     free: data.free,
                     lat: data.latitude,
                     long: data.longitude,
-                    description: data.description,
+                    description: data.event_description,
                     friend_list: [ "a", "b" ]
                 }
             };
@@ -86,6 +91,8 @@ export class EventsFormComponent {
             this.apiServicesService.CreateProfessionalEvent(event_data).subscribe((response:any) => {
                 console.log(response)
                 this.loading = false;
+                this.ResetForm();
+                this.toastr.error('Event is Created Successfully', "Success");
 
                 if(response['activity_id']) {
                     if(this.imagesArraylist.length > 0) {
@@ -101,6 +108,10 @@ export class EventsFormComponent {
                 console.log(error);
             });
         }
+    }
+
+    ResetForm() {
+        this.form.reset();
     }
 
     imagesArraylist:any = [];

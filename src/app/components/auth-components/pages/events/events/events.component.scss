@@ -1,0 +1,32 @@
+.m-details {
+    .single-item {
+        display: grid;
+        grid-template-rows: 120px auto auto auto;
+        .event-img {
+            width: 100%;
+            height: 120px;
+            margin: 0 0 8px;
+        }
+        .event-img.no-img {
+            opacity: 0.4;
+        }
+        span.event-dates {
+            font-size: 12px;
+            margin: 0 0 10px;
+        }
+        .event-detail {
+            h3 {
+                font-size: 14px;
+                line-height: 18px;
+                margin-bottom: 5px;
+                color: #000000;
+                font-weight: normal;
+            } 
+            p {
+                font-size: 13px;
+                color: #b0b0b0;
+                margin: 0;
+            }
+        }
+    }
+}

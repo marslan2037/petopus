@@ -155,12 +155,40 @@ span.overlay {
             } 
         }
     }
+    //MIDDLE PAGE HEADING FOR EACH PAGE
     .m-heading.grid-col-2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
         align-items: center;
     }
+    //MIDLE PAGE DETAIL FOR EACH PAGE
+    .m-details {
+        padding: 0 20px;
+    }
+    .m-details.grid-col {
+        display: grid;
+        grid-gap: 20px;
+        
+    }
+    .m-details.grid-col-1 {
+        grid-template-columns: 1fr;
+    }
+    .m-details.grid-col-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    .m-details.grid-col-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .m-details.grid-col {
+        .single-item {
+            background-color: #f9f9f6;
+            padding: 10px 12px;
+            border-radius: 6px;
+            box-shadow: var(--p-card-shadow,0 0 0 1px rgba(63,63,68,.05),0 1px 3px 0 rgba(63,63,68,.15));
+        }
+    }
+
     .m-thumbnail {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));

@@ -68,15 +68,6 @@
         <div class="form-group row">
             <div class="col">
                 <label class="custom-label" for="start_time">Start Time:</label>
-                <!-- <input 
-                    type="text" 
-                    class="form-control" 
-                    name="start_time" 
-                    formControlName="start_time" 
-                    placeholder="Start Time" 
-                    bsTimepicker 
-                    [ngClass]="{'is-invalid': submitted && form.controls.start_time.errors}"
-                > -->
                 <timepicker formControlName="start_time"></timepicker>
 
                 <div *ngIf="submitted && form.controls.start_time.errors" class="invalid-feedback">Start Time is required</div>
@@ -84,16 +75,6 @@
 
             <div class="col">
                 <label class="custom-label" for="end_time">End Time:</label>
-                <!-- <input 
-                    type="text" 
-                    class="form-control" 
-                    name="end_time" 
-                    formControlName="end_time" 
-                    placeholder="End Time" 
-                    bsDatepicker 
-                    [bsConfig]="{dateInputFormat: 'h:mm:ss a', isAnimated: true}" 
-                    [ngClass]="{'is-invalid': submitted && form.controls.end_time.errors}"
-                > -->
                 <timepicker formControlName="end_time"></timepicker>
 
                 <div *ngIf="submitted && form.controls.end_time.errors" class="invalid-feedback">End Time is required</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
 
 @Component({
     selector: 'parks-form',
@@ -10,6 +12,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ParksFormComponent {
 
     form:any;
+    latitude:any = '';
+    longitude:any = '';
     loading:boolean = false;
     submitted:boolean = false;
     event_status_list:any = [
@@ -31,7 +35,11 @@ export class ParksFormComponent {
         {id: 8, name: "Month", value: "month" }
     ]
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(
+            private formBuilder: FormBuilder,
+            private toastr: ToastrService, 
+            private apiServicesService: ApiServicesService
+        ) {}
 
     ngOnInit() {
         this.CreateForm();
@@ -59,7 +67,7 @@ export class ParksFormComponent {
             'bags': ['', ],
             'rest_room': ['', ],
             'lighting': ['', ],
-            'water_situation': ['', ],
+            'water_station': ['', ],
             'park_pictures': ['', Validators.required],
         })
     }
@@ -76,6 +84,41 @@ export class ParksFormComponent {
         if(this.form.valid) {
             let data = this.form.value;
             this.loading = true;
+
+            const params = [{
+                authentication_token: sessionStorage.getItem("token"),
+                professional_id: sessionStorage.getItem("professional_id"),
+                park : {
+                    name: data.park_name,
+                    location: data.location_type,
+                    is_public: data.status,
+                    is_indoor: 'type',
+                    is_fancy: data.fancy,
+                    phone: data.phone_number,
+                    parking: data.parking,
+                    description: data.park_description,
+                    opening_time: data.opening_hour,
+                    closing_time: data.closing_hour,
+                    field_price: data.pet_price_unit,
+                    price: data.price,
+                    off_leash: data.off_leash,
+                    restroom: data.rest_room,
+                    lighting: data.lighting,
+                    bags: data.bags,
+                    small_dog_area: data.dog_area,
+                    water_stations: data.water_station,
+                    lat: this.latitude,
+                    long: this.longitude
+                }   
+            }];
+
+            this.apiServicesService.CreateParks(params).subscribe((response:any) => {
+                console.log(response);
+                this.loading = false;
+            }, error => {
+                console.log(error);
+                this.loading = false;
+            })
         }
     }
 }

@@ -1,5 +1,6 @@
 
 <local-header></local-header>
+<ngx-loading [show]="loading"></ngx-loading>
 
 <div class="main-petowner">
     <div class="container-fluid">
@@ -37,7 +38,7 @@
                         
                         <br>
 
-                        <form>
+                        <form [formGroup]="form" (ngSubmit)="SubmitData()">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Full Name:</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Full Name">

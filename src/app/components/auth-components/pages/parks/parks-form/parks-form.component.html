@@ -53,7 +53,7 @@
         <div class="form-group row">
             <div class="col">
                 <label class="custom-label" for="opening_hour">Park Opening Hours:</label>
-                <input 
+                <!-- <input 
                     type="text" 
                     class="form-control" 
                     name="opening_hour" 
@@ -61,14 +61,15 @@
                     placeholder="Park Opening Hours" 
                     bsTimepicker 
                     [ngClass]="{'is-invalid': submitted && form.controls.opening_hour.errors}"
-                >
+                > -->
+                <timepicker formControlName="opening_hour"></timepicker>
 
                 <div *ngIf="submitted && form.controls.opening_hour.errors" class="invalid-feedback">Park Opening Hours is required</div>
             </div>
 
             <div class="col">
                 <label class="custom-label" for="closing_hour">Park Closing Hours:</label>
-                <input 
+                <!-- <input 
                     type="text" 
                     class="form-control" 
                     name="closing_hour" 
@@ -77,7 +78,8 @@
                     bsDatepicker 
                     [bsConfig]="{dateInputFormat: 'h:mm:ss a', isAnimated: true}" 
                     [ngClass]="{'is-invalid': submitted && form.controls.closing_hour.errors}"
-                >
+                > -->
+                <timepicker formControlName="closing_hour"></timepicker>
 
                 <div *ngIf="submitted && form.controls.closing_hour.errors" class="invalid-feedback">Park Closing Hours is required</div>
             </div>
@@ -185,8 +187,8 @@
             </div>
 
             <div class="col col-4 have-checkbox">
-                <label class="custom-label">Water Situation
-                    <input type="checkbox" name="water_situation" formControlName="water_situation" />
+                <label class="custom-label">Water Station
+                    <input type="checkbox" name="water_station" formControlName="water_station" />
                     <span class="check-mark"><i class="fa fa-check"></i></span>
                 </label>
             </div>

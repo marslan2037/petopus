@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiServicesService } from '../../../../../services/api-services/api-services.service';
+import { ToastrService } from 'ngx-toastr';
+import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
 
 @Component({
   selector: 'parks',
@@ -9,17 +10,23 @@ import { ApiServicesService } from '../../../../../services/api-services/api-ser
 })
 
 export class ParksComponent {
-
-    constructor(private router: Router, private apiService: ApiServicesService) {
-
-    }
-
+    
     services:any = [];
     parks:any = [];
     url:any;
     events_formated:any = [];
     creating_park:boolean = false;
     role_id:any;
+    loading:boolean = false;
+
+    constructor(
+            private router: Router, 
+            private apiService: ApiServicesService,
+            private toastr: ToastrService, 
+            private apiServicesService: ApiServicesService
+        ) {
+    }
+
 
     ngOnInit() {
         this.role_id = sessionStorage.getItem('role_id');
@@ -28,13 +35,17 @@ export class ParksComponent {
     }
 
     DisplayEventForm() {
-        // this.creating_park = true;
         this.router.navigate(['/home/parks/create']);
     }
 
     GetAllParks() {
-        this.apiService.GetAllParks().subscribe((response => {
+        this.loading = true;
+        this.apiService.GetAllParks().subscribe((response:any) => {
             console.log(response);
-        }))
+            this.loading = false;
+        }, error => {
+            console.log(error);
+            this.loading = false;
+        })
     }
 }

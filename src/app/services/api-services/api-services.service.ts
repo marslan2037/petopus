@@ -14,13 +14,13 @@ export class ApiServicesService {
         
     }
 
-    GetAllServices() {
-        let url = this.url+'/api/v1/users/';
-        return this.http.get(url).pipe(
-            catchError(error => {
-                return observableThrowError(error)
-            }));
-    }
+    // GetAllServices() {
+    //     let url = this.url+'/api/v1/users/';
+    //     return this.http.get(url).pipe(
+    //         catchError(error => {
+    //             return observableThrowError(error)
+    //         }));
+    // }
 
 /*************************************************************************************/    
 /********************* PROFESSIONAL EVENTS API"S CALL ********************************/    
@@ -51,6 +51,11 @@ export class ApiServicesService {
 /********************* PROFESSIONAL EVENTS API"S CALL ********************************/    
 /*************************************************************************************/    
 
+
+
+/*************************************************************************************/    
+/********************* PET OWNER EVENTS API"S CALL ***********************************/    
+/*************************************************************************************/ 
     /* PET OWNER GET EVENTS */
     GetAllPetEvents() {
         let user_id = sessionStorage.getItem("user_id");
@@ -63,22 +68,108 @@ export class ApiServicesService {
                 return observableThrowError(error)
             }));
     }
+/*************************************************************************************/    
+/********************* PET OWNER EVENTS API"S CALL ***********************************/    
+/*************************************************************************************/
 
-    GetAllAnnouncements() {
+
+/*************************************************************************************/    
+/*************************** SERVICES API"S CALL *************************************/    
+/*************************************************************************************/
+    GetAllServices() {
+        let user_id = sessionStorage.getItem("user_id");
         let professional_id = sessionStorage.getItem("professional_id");
         let token = sessionStorage.getItem("token");
 
-        let url = this.url+'/api/v1/professionals/'+professional_id+'/announces?authentication_token='+token;
+        let url = this.url+'/api/v1/users/'+user_id+'/professionals/'+professional_id+'/services?authentication_token='+token;
         return this.http.get(url).pipe(
             catchError(error => {
                 return observableThrowError(error)
-            }));
+            })); 
+    }
+
+    CreateService(data:any) {
+        let user_id = sessionStorage.getItem("user_id");
+        let professional_id = sessionStorage.getItem("professional_id");
+        let token = sessionStorage.getItem("token");
+
+        let url = this.url+'/api/v1/users/'+user_id+'/professionals/'+professional_id+'/services?authentication_token='+token;
+        return this.http.post(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            })); 
+    }
+/*************************************************************************************/    
+/*************************** SERVICES API"S CALL *************************************/    
+/*************************************************************************************/
+
+
+/*************************************************************************************/    
+/***************************** ALERTS API"S CALL *************************************/    
+/*************************************************************************************/
+    CreateAlerts(data:any) {
+        let url = this.url+'/api/v1/alerts';
+        return this.http.post(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+    }
+
+    GetAllAlerts() {
+        let token = sessionStorage.getItem("token");
+
+        let url = this.url+'/api/v1/alerts?authentication_token='+token;
+        return this.http.get(url).pipe(
+        catchError(error => {
+            return observableThrowError(error);
+        })); 
+    }
+/*************************************************************************************/    
+/***************************** ALERTS API"S CALL *************************************/    
+/*************************************************************************************/
+
+
+/*************************************************************************************/    
+/****************************** PARKS API"S CALL *************************************/    
+/*************************************************************************************/
+    CreateParks(data:any) {
+        let url = this.url+'/api/v1/professional/parks';
+        return this.http.post(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            })
+        );
     }
 
     GetAllParks() {
         let token = sessionStorage.getItem("token");
 
         let url = this.url+'/api/v1/professional/parks?authentication_token='+token+'&list=true';
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));    
+    }
+
+    Getprofessionalparks() {
+        let token = sessionStorage.getItem("token");
+        let professional_id = sessionStorage.getItem("professional_id");
+
+        let url = this.url+'/api/v1/professional/parks?authentication_token='+token+'&professional_id='+professional_id;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));    
+    }
+/*************************************************************************************/    
+/****************************** PARKS API"S CALL *************************************/    
+/*************************************************************************************/
+
+    GetAllAnnouncements() {
+        let professional_id = sessionStorage.getItem("professional_id");
+        let token = sessionStorage.getItem("token");
+
+        let url = this.url+'/api/v1/professionals/'+professional_id+'/announces?authentication_token='+token;
         return this.http.get(url).pipe(
             catchError(error => {
                 return observableThrowError(error)

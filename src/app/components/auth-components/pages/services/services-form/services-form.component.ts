@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
 
 @Component({
     selector: 'services-form',
@@ -67,7 +69,11 @@ export class ServicesFormComponent {
         {id: 8, name: "Month", value: "month" }
     ]
  
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(
+            private formBuilder: FormBuilder,
+            private toastr: ToastrService, 
+            private apiServicesService: ApiServicesService
+        ) {}
 
     ngOnInit() {
         this.CreateForm();
@@ -101,6 +107,27 @@ export class ServicesFormComponent {
             let data = this.form.value;
             this.loading = true;
             console.log(data);
+
+            const params = [{
+                authentication_token: sessionStorage.getItem("token"),
+                professional_id: sessionStorage.getItem("professional_id"),
+                name: data.service_name,
+                service_type: data.service_type,
+                pet_type: data.pet_type,
+                free: data.free,
+                price : data.price,
+                negotiable: data.negotiable,
+                description: data.service_description,
+                call_for_price : data.call_for_price,
+            }];
+
+            this.apiServicesService.CreateService(params).subscribe((response:any) => {
+                console.log(response);
+                this.loading = false;
+            }, error => {
+                console.log(error);
+                this.loading = false;
+            })
         }
     }
 }

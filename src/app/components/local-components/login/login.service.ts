@@ -16,6 +16,10 @@ export class LoginService {
         return this.http.post(this.url+'/api/v1/login/', data[0])
     }
 
+    CreateNewAccount(data:any) {
+        return this.http.post(this.url+'/api/v1/sign_up', data);
+    }
+
     isAuthenticated() {
         let token = sessionStorage.getItem('token') !== null && sessionStorage.getItem('token') !== 'undefined';
         if (token) {

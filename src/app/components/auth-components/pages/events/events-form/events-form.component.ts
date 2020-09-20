@@ -70,7 +70,7 @@ export class EventsFormComponent {
                 authentication_token: token,
                 activity: {
                     name: data.name,
-                    date: data.start_date,
+                    start_date: data.start_date,
                     end_date: data.end_date,
                     loccation: data.address,
                     activity_type: data.status,
@@ -92,7 +92,7 @@ export class EventsFormComponent {
                 console.log(response)
                 this.loading = false;
                 this.ResetForm();
-                this.toastr.error('Event is Created Successfully', "Success");
+                this.toastr.success('Event is Created Successfully', "Success");
 
                 if(response['activity_id']) {
                     if(this.imagesArraylist.length > 0) {

@@ -27,13 +27,19 @@
             <div class="file-input-box row m-0 p-4 rounded" [ngClass]="{'is-invalid': submitted && form.controls.album_images.errors}">
                 <div class="col col-3 file-input-data">
                     <img src="assets/images/createanouncement/upload.png" alt="" />
-                    <input type="file" multiple class="form-control" name="album_images" formControlName="album_images">
+                    <input type="file" multiple 
+                        class="form-control" 
+                        name="album_images" 
+                        formControlName="album_images"
+                        (change)="onFileChange($event)"
+                    >
                 </div>
 
                 <div class="col col-9 file-input-data">
                     <label class="custom-label" for="album_images">Upload Upto 10 Images Here:</label>
                 </div>
             </div>
+
 
             <div *ngIf="submitted && form.controls.album_images.errors" class="invalid-feedback">Album Images is required</div>
         </div>

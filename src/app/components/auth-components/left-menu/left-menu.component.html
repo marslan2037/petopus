@@ -30,8 +30,9 @@
 
             <div class="options">
                 <ul>
-                    <li><a routerLink="album"><img src="assets/images/7_03.png">Album</a></li>
-                    <li><a routerLink="friends"><img src="assets/images/8_66.png">Friends</a></li>
+                    <li><a routerLink="album"><img src="assets/images/7_03.png">Albums</a></li>
+                    <li *ngIf="role_id == '2'"><a routerLink="friends"><img src="assets/images/8_66.png">Friends</a></li>
+                    <li *ngIf="role_id == '1'"><a routerLink="friends"><img src="assets/images/8_66.png">Followers</a></li>
                     <li><a routerLink="chat"><img src="assets/images/9_66.jpg">Messages</a></li>
                     <li><a routerLink="groups"><img src="assets/images/11_66.png">Groups</a></li>
                     <li><a routerLink="events"><img src="assets/images/10_66.png">Events</a></li>

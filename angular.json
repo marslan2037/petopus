@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "petopus"
+  "defaultProject": "petopus",
+  "cli": {
+    "analytics": "62f797a5-76bd-4710-b598-2bb0ef0916f6"
+  }
 }

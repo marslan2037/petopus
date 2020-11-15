@@ -1,4 +1,5 @@
 <div class="middle-page">
+    <ngx-loading [show]="loading"></ngx-loading>
     <div class="m-heading grid-col-2">
         <h5>Albums</h5>
 
@@ -9,49 +10,17 @@
     </div>
 
     <div class="m-thumbnail">
-        <div class="single-item">
+        <div class="single-item" *ngFor="let album of albums_list">
             <span class="overlay"></span>
-            <img src="assets/images/album/album1.png" alt="" />
+            <img *ngIf="album.pictures.length == 0" src="/assets/images/Album/album1.png" alt="" />
+            <img *ngIf="album.pictures.length > 0" [src]=" url+ album.pictures[0].picture_url || ' /assets/images/Album/album1.png'" alt="" />
+
             <div class="item-detail">
-                <p class="it-title">Place</p>
+                <p class="it-title">{{album.album_name}}</p>
                 <img src="assets/images/plus.png" alt="" />
             </div>
         </div>
 
-        <div class="single-item">
-            <span class="overlay"></span>
-            <img src="assets/images/album/album23.png" alt="" />
-            <div class="item-detail">
-                <p class="it-title">Training</p>
-                <img src="assets/images/plus.png" alt="" />
-            </div>
-        </div>
-
-        <div class="single-item">
-            <span class="overlay"></span>
-            <img src="assets/images/album/album4.png" alt="" />
-            <div class="item-detail">
-                <p class="it-title">Walking</p>
-                <img src="assets/images/plus.png" alt="" />
-            </div>
-        </div>
-
-        <div class="single-item">
-            <span class="overlay"></span>
-            <img src="assets/images/album/album2.png" alt="" />
-            <div class="item-detail">
-                <p class="it-title">Park</p>
-                <img src="assets/images/plus.png" alt="" />
-            </div>
-        </div>
-
-        <div class="single-item">
-            <span class="overlay"></span>
-            <img src="assets/images/album/album1.png" alt="" />
-            <div class="item-detail">
-                <p class="it-title">Place</p>
-                <img src="assets/images/plus.png" alt="" />
-            </div>
-        </div>
+        
     </div>
 </div>

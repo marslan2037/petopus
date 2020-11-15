@@ -16,6 +16,7 @@ export class ApiServicesService {
         
     }
 
+
     // GetAllServices() {
     //     let url = this.url+'/api/v1/users/';
     //     return this.http.get(url).pipe(
@@ -180,6 +181,30 @@ export class ApiServicesService {
                 return observableThrowError(error)
             }));    
     }
+/*************************************************************************************/    
+/****************************** ALBUMS API"S CALL *************************************/    
+/*************************************************************************************/
+    CreateAlbumsProfessional(data:any)
+    {
+        
+        let professional_id = sessionStorage.getItem("professional_id");
+        let url = this.url+'/api/v1/professionals/'+professional_id+'/album_create';
+        return this.http.post(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));  
+    }
+    GetProfessionalAlbums(){
+        let user_id = sessionStorage.getItem("user_id");
+        let professional_id = sessionStorage.getItem("professional_id");
+        let token = sessionStorage.getItem("token");
+        let url = this.url+'/api/v1/users/'+user_id+'/professionals/'+professional_id+'/albums?authentication_token='+token;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));  
+    }
+
 /*************************************************************************************/    
 /****************************** PARKS API"S CALL *************************************/    
 /*************************************************************************************/

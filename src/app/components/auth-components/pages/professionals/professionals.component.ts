@@ -10,23 +10,28 @@ import { ApiServicesService } from '../../../../services/api-services/api-servic
 
 export class ProfessionalsComponent {
 
+    loading:boolean = false;
     services:any = [];
     creating_service:boolean = false;
     role_id:any;
+    professionals_list:any = [];
 
     constructor(private router: Router, private apiServicesService: ApiServicesService) {}
 
     ngOnInit() {
         this.role_id = sessionStorage.getItem("role_id");
+        this.GetAllProfessionals();
     }
 
-    DisplayServicesForm() {
-        this.router.navigate(['/home/services/create']);
-    }
-
-    GetAllServicesData() {
-        this.apiServicesService.GetAllServices().subscribe((response:any) => {
-            this.services = response;
+    GetAllProfessionals() {
+        this.loading = true;
+        this.apiServicesService.GetAllProfessionals().subscribe((response:any) => {
+            console.log(response);
+            this.loading = false;
+            this.professionals_list = response.professionals;
+        }, error => {
+            this.loading = false;
+            console.log(error);
         })
     }
 }

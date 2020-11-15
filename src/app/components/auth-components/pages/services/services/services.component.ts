@@ -29,7 +29,7 @@ export class ServicesComponent {
         this.apiServicesService.GetAllServices().subscribe((response:any) => {
             console.log(response);
             this.loading = false;
-            // this.services = response;
+            this.services = response.services;
         }, error => {
             console.log(error);
             this.loading = false;

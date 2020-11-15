@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class LoginService {
 
-    // url:any = 'https://petopus-app.herokuapp.com';
-    url:any = "http://35.232.243.88";
-    // url:any = "https://f9bb406d18e2.ngrok.io";
+    live_server:any = "http://35.232.243.88";
+    local_server:any = "https://a4d968bb9730.ngrok.io";
+
+    url:any = this.live_server;
     
     constructor(private http: HttpClient) {  
         

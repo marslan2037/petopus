@@ -218,4 +218,83 @@ span.overlay {
             }
         }
     }
+
+    .m-page-data {
+        padding: 0 15px;
+        ul {
+            padding: 0;
+        }
+
+        .have-hover {
+            cursor: pointer;
+        }
+
+        //SERVICES PAGE
+        .array_list {
+            .single-item {
+                margin: 0 15px 20px;
+                padding: 0 0 10px;
+                border-bottom: 1px solid #ced4da;
+                &:last-child {
+                    border: none;
+                    padding: 0;
+                }
+                ul {
+                    li {
+                        list-style: none;
+                    }
+                }
+                h4 {
+                    text-transform: capitalize;
+                    font-size: 18px;
+                    color: #ef5445;
+                }
+                .have-grid {
+                    display: grid;
+                    grid-template-columns: 2.5fr 1fr;
+                    grid-gap: 20px;
+                }
+                .align-end {
+                    justify-self: end;
+                    padding: 0;
+                    margin: 0;
+                    li {
+                        font-size: 14px;
+                        color: #ef5445;
+                        list-style: none;
+                        span.heading {
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .pets-list {
+                    li {
+                        font-size: 14px;
+                        list-style: none;
+                        padding: 0;
+                        display: inline-block;
+                        margin: 0 12px 0 0;
+                        color: #ef5445;
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                    li.heading {
+                        font-size: 16px;
+                    }
+                    li.items {
+                        border-radius: 12px;
+                        padding: 6px 10px;
+                        line-height: 9px;
+                        border: 1px solid;
+                        font-size: 12px;
+                    }
+                }
+                p {
+                    color: #ef5445;
+                    margin: 0;
+                }
+            }
+        }
+    }
 }

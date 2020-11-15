@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
 
 @Component({
@@ -70,6 +71,7 @@ export class ServicesFormComponent {
     ]
  
     constructor(
+            private router: Router,
             private formBuilder: FormBuilder,
             private toastr: ToastrService, 
             private apiServicesService: ApiServicesService
@@ -108,25 +110,31 @@ export class ServicesFormComponent {
             this.loading = true;
             console.log(data);
 
-            const params = [{
-                authentication_token: sessionStorage.getItem("token"),
-                professional_id: sessionStorage.getItem("professional_id"),
-                name: data.service_name,
-                service_type: data.service_type,
-                pet_type: data.pet_type,
-                free: data.free,
-                price : data.price,
-                negotiable: data.negotiable,
-                description: data.service_description,
-                call_for_price : data.call_for_price,
-            }];
+            const params = {
+                service: {
+                    authentication_token: sessionStorage.getItem("token"),
+                    professional_id: sessionStorage.getItem("professional_id"),
+                    name: data.service_name,
+                    service_type: data.service_type,
+                    pet_type: data.pet_type,
+                    free: data.free,
+                    price : data.price,
+                    negotiable: data.negotiable,
+                    description: data.service_description,
+                    call_for_price : data.call_for_price,
+                    unit: data.pet_price_unit
+                }
+            };
 
             this.apiServicesService.CreateService(params).subscribe((response:any) => {
                 console.log(response);
                 this.loading = false;
+                this.toastr.success('Service is Created', 'Success');
+                this.router.navigateByUrl('home/services');
             }, error => {
                 console.log(error);
                 this.loading = false;
+                this.toastr.error('Something went wrong', 'Error');
             })
         }
     }

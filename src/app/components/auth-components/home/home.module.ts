@@ -36,6 +36,7 @@ import { BreedersComponent } from './../pages/breeders/breeders/breeders.compone
 import { BreedersFormComponent } from './../pages/breeders/breeders-form/breeders-form.component';
 import { AdvertisementsComponent } from './../pages/advertisements/advertisements.component';
 import { FeedbackComponent } from './../pages/feedback/feedback.component';
+import { AboutFormComponent } from '../pages/about/about-form/about-form.component';
 
 @NgModule({
     declarations: [
@@ -69,6 +70,7 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
         BreedersFormComponent,
         AdvertisementsComponent,
         FeedbackComponent,
+        AboutFormComponent
     ],
     imports: [
         HomeRoutes,

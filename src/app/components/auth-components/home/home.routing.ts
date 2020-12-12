@@ -29,6 +29,7 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
 import { PetsComponent } from './../pages/pets/pet/pet.component';
 import { PetFormComponent } from './../pages/pets/pet-form/pet-form.component';
 import { AuthService } from './../../../services/auth-services/auth-services.service';
+import { AboutFormComponent } from '../pages/about/about-form/about-form.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
         children: [
             { path: '', component: NewsFeedComponent, canActivate: [AuthService] },
             { path: 'about', component: AboutComponent, canActivate: [AuthService] },
+            { path: 'profile/create', component: AboutFormComponent, canActivate: [AuthService] },
             { path: 'professionals', component: ProfessionalsComponent, canActivate: [AuthService] },
 
             { path: 'pets', component: PetsComponent, canActivate: [AuthService] },

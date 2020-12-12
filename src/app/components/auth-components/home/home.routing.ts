@@ -26,6 +26,8 @@ import { BreedersComponent } from './../pages/breeders/breeders/breeders.compone
 import { BreedersFormComponent } from './../pages/breeders/breeders-form/breeders-form.component';
 import { AdvertisementsComponent } from './../pages/advertisements/advertisements.component';
 import { FeedbackComponent } from './../pages/feedback/feedback.component';
+import { PetsComponent } from './../pages/pets/pet/pet.component';
+import { PetFormComponent } from './../pages/pets/pet-form/pet-form.component';
 import { AuthService } from './../../../services/auth-services/auth-services.service';
 
 const routes: Routes = [
@@ -38,6 +40,9 @@ const routes: Routes = [
             { path: '', component: NewsFeedComponent, canActivate: [AuthService] },
             { path: 'about', component: AboutComponent, canActivate: [AuthService] },
             { path: 'professionals', component: ProfessionalsComponent, canActivate: [AuthService] },
+
+            { path: 'pets', component: PetsComponent, canActivate: [AuthService] },
+            { path: 'pets/create', component: PetFormComponent, canActivate: [AuthService] },
 
             { path: 'services', component: ServicesComponent, canActivate: [AuthService] },
             { path: 'services/create', component: ServicesFormComponent, canActivate: [AuthService] },

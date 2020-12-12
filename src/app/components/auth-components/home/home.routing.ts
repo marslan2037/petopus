@@ -27,6 +27,7 @@ import { BreedersFormComponent } from './../pages/breeders/breeders-form/breeder
 import { AdvertisementsComponent } from './../pages/advertisements/advertisements.component';
 import { FeedbackComponent } from './../pages/feedback/feedback.component';
 import { AuthService } from './../../../services/auth-services/auth-services.service';
+import { AboutFormComponent } from '../pages/about/about-form/about-form.component';
 
 const routes: Routes = [
 
@@ -37,6 +38,7 @@ const routes: Routes = [
         children: [
             { path: '', component: NewsFeedComponent, canActivate: [AuthService] },
             { path: 'about', component: AboutComponent, canActivate: [AuthService] },
+            { path: 'profile/create', component: AboutFormComponent, canActivate: [AuthService] },
             { path: 'professionals', component: ProfessionalsComponent, canActivate: [AuthService] },
 
             { path: 'services', component: ServicesComponent, canActivate: [AuthService] },

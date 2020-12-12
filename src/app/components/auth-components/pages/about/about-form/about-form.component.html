@@ -1,0 +1,183 @@
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="create-announcement rounded-10">
+
+                <div class="heading">
+                    Profesionanl Profile
+            
+                    <div class="search">
+                        <form [formGroup]="form" (ngSubmit)="SubmitData()">
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Company Name:</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="company_name" [ngClass]="{'is-invalid': submitted && form.controls.company_name.value == 'undefined'}" placeholder=""> 
+                                <div *ngIf="submitted && form.controls.company_name.errors" class="invalid-feedback">Company Name is required</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Business Information:</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" formControlName="business_name" [ngClass]="{'is-invalid': submitted && form.controls.business_name.value == 'undefined'}"> 
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="exampleInputPassword1">Type of Profssion:</label>
+                                    <select class="form-control" id="exampleFormControlSelect1" formControlName="profession_tyoe" [ngClass]="{'is-invalid': submitted && form.controls.profession_tyoe.value == 'undefined'}">
+                                        <option>Canada</option>
+                                        <option>Australia</option>
+                                        <option>UK</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="exampleInputPassword1">Contact:</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="" formControlName="contact" [ngClass]="{'is-invalid': submitted && form.controls.contact.value == 'undefined'}">
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="card border-0">
+                                    
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Mon Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_mon">
+                                                    <option selected value="monday">Mon</option>
+                                                   
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_mon" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_mon" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Tue Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> 
+                                                <select class="mb-2 mob" formControlName="day_tue">
+                                                    <option selected value="tuesday">Tue</option>
+                                                
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_tue" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_tue" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Wed Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_wed">
+                                                <option  value="wednesday">Wed</option>
+                                                
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_wed" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_wed" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Thur Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_thur">
+                                                <option  value="thursday">Thu</option>
+                                               
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_thur" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_thur" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Fri Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_fri">
+                                                <option selected value="friday">Fri</option>
+                                               
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_fri" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_fri" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Sat Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_sat">
+                                                <option selected value="saturday">Sat</option>
+                                               
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_sat" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_sat" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col-sm-2"> <label class="text-grey mt-1 mb-3">Sun Hours</label> </div>
+                                        <div class="col-sm-10 list" >
+                                            <div class="mb-2 row justify-content-between px-3"> <select class="mb-2 mob" formControlName="day_sun">
+                                                <option selected value="sunday">Sun</option>
+                                            
+                                                </select>
+                                                <div class="mob"> <label class="text-grey mr-1">From</label> <input class="ml-1" type="time" formControlName="start_sun" name="from"> </div>
+                                                <div class="mob mb-2"> <label class="text-grey mr-4">To</label> <input class="ml-1" formControlName="end_sun" type="time" name="to"> </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="row">
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <label for="exampleInputPassword1">Country:</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="" formControlName="country" [ngClass]="{'is-invalid': submitted && form.controls.country.value == 'undefined'}">
+                            </div>
+                            <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                            <label for="exampleInputPassword1">State:</label>
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state" [ngClass]="{'is-invalid': submitted && form.controls.state.value == 'undefined'}">
+                            <option>Canada</option>
+                            <option>Australia</option>
+                            <option>UK</option>
+
+                            </select>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="exampleInputPassword1">Postal Code:</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="" formControlName="postal" [ngClass]="{'is-invalid': submitted && form.controls.postal.value == 'undefined'}">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <label for="exampleInputPassword1">City:</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="" formControlName="city" [ngClass]="{'is-invalid': submitted && form.controls.city.value == 'undefined'}">
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+  </div>

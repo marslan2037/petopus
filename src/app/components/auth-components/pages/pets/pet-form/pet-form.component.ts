@@ -16,7 +16,9 @@ export class PetFormComponent {
             private formBuilder: FormBuilder,
             
 
-        ) {}
+        ) {
+            this.CreateForm();
+        }
 
     pet_type:any = [
         {id: 1, name: "Dog", value: "Dog" },

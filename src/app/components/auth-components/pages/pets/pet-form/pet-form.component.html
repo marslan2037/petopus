@@ -3,19 +3,19 @@
       <div class="heading">
          Create New Born
          <div class="search">
-            <form [formGroup]="form" (ngSubmit)="SubmitData()">
+            <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">
                <div class="row">
                   <div class="form-group col-lg-6 col-md-12 col-sm-12">
                      <label for="exampleInputPassword1">Name</label>
-                     <input type="text" class="form-control" id="exampleInputPassword1" formControlName="name" placeholder="Name" [ngClass]="{'is-invalid': submitted && form.controls.name.errors}" placeholder=" "required>
+                     <input type="text" class="form-control" id="exampleInputPassword1" name="name" formControlName="name" placeholder="Name" [ngClass]="{'is-invalid': submitted && form.controls.name.errors}" placeholder=" " required>
                      <div *ngIf="submitted && form.controls.name.errors" class="invalid-feedback">Name is required</div>
                   </div>
                   <div class="form-group col-lg-6 col-md-12 col-sm-12">
                      <label for="exampleInputPassword1">Pet Type</label>
                      <select class="form-control" id="exampleFormControlSelect1" formControlName="status" [ngClass]="{'is-invalid': submitted && form.controls.status.value == 'undefined'}">
-                        <option>Canada</option>
-                        <option>Australia</option>
-                        <option>UK</option>
+                        <option [value]="undefined">Select Value</option>
+                        <option *ngFor="let status of pet_type" [value]="status.value">{{status.name}}</option>
+                                       
                      </select>
                   </div>
                </div>
@@ -27,8 +27,16 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-12 col-sm-12">
                      <label for="exampleInputPassword1">Size</label>
-                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="email" placeholder="email" [ngClass]="{'is-invalid': submitted && form.controls.email.errors}"> 
-                     <div *ngIf="submitted && form.controls.email.errors" class="invalid-feedback">Email is required</div>
+                     <select class="form-control" id="exampleFormControlSelect1" formControlName="size" [ngClass]="{'is-invalid': submitted && form.controls.size.value == 'undefined'}">
+                     
+                        <option value="0">Select Size</option>
+                        <option value="Small" selected>Small</option>
+                        <option value="Large">Large</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Giant">Giant</option>
+                      </select>
+
+                     <div *ngIf="submitted && form.controls.size.errors" class="invalid-feedback">Size is required</div>
                   </div>
                </div>
                <div class="row">
@@ -42,18 +50,72 @@
                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="breed" placeholder="breed" [ngClass]="{'is-invalid': submitted && form.controls.breed.errors}"> 
                      <div *ngIf="submitted && form.controls.breed.errors" class="invalid-feedback">Breed is required</div>
                   </div>
+                  <!-- <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                     <label for="exampleInputPassword1">Breed</label>
+                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" required formControlName="2ndbreed" placeholder="breed" [ngClass]="{'is-invalid': submitted && form.controls.2ndbreed.errors}"> 
+                     <div *ngIf="submitted && form.controls.2ndbreed.errors" class="invalid-feedback">Breed is required</div>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                     <label for="exampleInputPassword1">2nd Breed</label>
+                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" required formControlName="2ndbreed" placeholder="breed" [ngClass]="{'is-invalid': submitted && form.controls.2ndbreed.errors}"> 
+                     <div *ngIf="submitted && form.controls.2ndbreed.errors" class="invalid-feedback">Breed is required</div>
+                  </div> -->
                </div>
+               <div class=" form-group ">
+                  <input type="checkbox" name="fancy-checkbox-default" formControlName="purebreed" value="purebreed" id="fancy-checkbox-default" autocomplete="off" />
+                  <div class=" btn-group ">
+                      <label for="fancy-checkbox-default" class=" btn btn-default ">
+                          <span class=" glyphicon glyphicon-ok "></span>
+                          <span> </span>
+                      </label>
+                      <label for="fancy-checkbox-default" class=" btn btn-default active ">
+                        Purebreed
+                      </label>
+                  </div>
+              </div>
+              <div class=" form-group ">
+                  <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" formControlName="mixedbreed" value="mixedbreed" autocomplete="off" />
+                  <div class=" btn-group ">
+                     <label for="fancy-checkbox-defaults" class=" btn btn-default ">
+                        <span class=" glyphicon glyphicon-ok "></span>
+                        <span> </span>
+                     </label>
+                     <label for="fancy-checkbox-defaults" class=" btn btn-default active ">
+                        Mixbreed
+                     </label>
+                  </div>
+               </div>
+              
+
                <div class="form-group">
-                  <label for="exampleInputPassword1"> Add Image Cover:</label>
+                  <div class="checkbox">
+                    <label class="radio-inline">
+                      <input type="radio" style="display: block;" name="is_intact" formControlName="is_intact" value="intact"  >
+                      <span class="radio-material"><span class="check"></span></span>
+                      Intact
+                    </label>
+                   
+                    <label class="radio-inline" style="margin-left:30px">
+                        <input type="radio" value="spayed" name="is_intact" formControlName="is_intact" style="display: block;"  >
+                        <span class="radio-material"><span class="check"></span></span>
+                        Spayed/neutered
+                    </label>
+
+                  </div>
+               </div>
+                
+          
+               <div class="form-group">
+                  <label for="exampleInputPassword1"> Add Profile Image:</label>
                   <div class="image-upload">
                      <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-3">
                            <label for="file-input">
-                           <img src="images/createanouncement/Upload.png">
+                           <img src="/images/createanouncement/Upload.png">
                            </label>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-9">
-                           <div class="text"> Upload Cover Images Here</div>
+                           <div class="text"> Upload Profile Image Here</div>
                         </div>
                      </div>
                   </div>
@@ -64,6 +126,7 @@
                   </textarea>
                </div>
                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
                <div class="add-new-adult">
                   <i class="fa fa-plus-circle" style="font-size:13px;color:#ef5445"></i>
                   Add New Adult Pet
@@ -112,11 +175,11 @@
                         <input type="text" class="form-control" id="exampleInputPassword1" placeholder=" " required="" formControlName="reserve" placeholder="reserve" [ngClass]="{'is-invalid': submitted && form.controls.reserve.errors}">
                         <div *ngIf="submitted && form.controls.reserve.errors" class="invalid-feedback">Reserve is required</div>
                      </div>
-                     <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                     <!-- <div class="form-group col-lg-6 col-md-12 col-sm-12">
                         <label for="exampleInputPassword1">Price</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="" required="" formControlName="price" placeholder="price" [ngClass]="{'is-invalid': submitted && form.controls.price.errors}"> 
                          <div *ngIf="submitted && form.controls.price.errors" class="invalid-feedback">Price is required</div>
-                     </div>
+                     </div> -->
                   </div>
                </div>
                <div class="form-group">
@@ -135,7 +198,7 @@
                   </div>
                </div>
                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            
             <div class="add-new-adult">
                <i class="fa fa-plus-circle" style="font-size:13px;color:#ef5445"></i>
                Add New Born

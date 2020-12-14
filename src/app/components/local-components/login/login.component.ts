@@ -28,6 +28,7 @@ export class LoginComponent {
             private loginService: LoginService, 
             private router: Router,
             private route: ActivatedRoute,
+            
         ) {
         this.CreateForm();
     }
@@ -80,10 +81,28 @@ export class LoginComponent {
                 if(response["role"] == "Professional") {
                     sessionStorage.setItem('company_name', response["professional"].company_name);
                     sessionStorage.setItem('professional_id', response["professional"].professional_id);
+                    
+                    if(!response['full_name']) return this.router.navigate(['/home/profile/create']);
+                    this.router.navigateByUrl(this.returnUrl);
                 }
+                if(response["role"] == "Owner") {
+                    
+                    this.loginService.GetPets().subscribe((response)=>{
+                        
+                        if(response['pets'].length == 0) return this.router.navigate(['/home/pets/create']);
+                        this.router.navigateByUrl(this.returnUrl);
+
+                    }, (error)=>{
+                        
+                        this.router.navigateByUrl(this.returnUrl);
+                    })
+                    //if(!response['full_name']) return this.router.navigate(['/home/profile/create']);
+
+                }
+
     
                 // this.router.navigate(['/home']);
-                this.router.navigateByUrl(this.returnUrl);
+                
             }, error => {
                 this.loading = false;
                 this.submitted = false;

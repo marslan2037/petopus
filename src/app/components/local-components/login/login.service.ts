@@ -20,6 +20,16 @@ export class LoginService {
     CreateNewAccount(data:any) {
         return this.http.post(this.url+'/api/v1/sign_up', data);
     }
+    
+
+    GetPets()
+    {
+        let token = sessionStorage.token
+        let url = this.url+'/api/v1/pets?authentication_token='+token;
+        return this.http.get(url);
+
+    }
+
 
     isAuthenticated() {
         let token = sessionStorage.getItem('token') !== null && sessionStorage.getItem('token') !== 'undefined';

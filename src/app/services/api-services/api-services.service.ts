@@ -26,6 +26,55 @@ export class ApiServicesService {
     // }
 
 /*************************************************************************************/    
+/********************* PROFESSIONAL USER API"S CALL ********************************/    
+/*************************************************************************************/    
+    /* UPDATE  PROFESSIONAL DATA */
+    UpdateProfessional(data: any) {
+        let user_id = sessionStorage.getItem("user_id");
+        let professional_id = sessionStorage.getItem("professional_id");
+        let token = sessionStorage.getItem("token");
+
+        let url = this.url+'/api/v1/users/'+user_id+'/professionals/'+professional_id;
+        return this.http.patch(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));
+
+    }
+
+    /* UPDATE USER  DATA*/
+    onUpdateUser(data: any)
+    {
+        let user_id = sessionStorage.getItem("user_id");
+        
+        let url = this.url+'/users/'+user_id;
+        return this.http.patch(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));
+        
+    }
+    /*  Professional Company schedule  */
+    CreateScheduleHours(data : any){
+        let url = this.url+'/api/v1/schedule';
+        return this.http.post(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));
+    }
+
+
+/*************************************************************************************/    
+/********************* PROFESSIONAL USER API"S CALL ********************************/    
+/*************************************************************************************/    
+
+
+
+
+
+
+
+/*************************************************************************************/    
 /********************* PROFESSIONAL EVENTS API"S CALL ********************************/    
 /*************************************************************************************/    
     /* GET ALL PROFESSIONAL EVENTS */
@@ -250,4 +299,33 @@ export class ApiServicesService {
         const req = new HttpRequest('POST', url, formData, options);
         return this.http.request(req);
     }
+
+/*************************************************************************************/    
+/****************************** PETS API"S CALL *************************************/    
+/*************************************************************************************/
+    ///Get all pets
+    GetAllPets()
+    {
+        let token = sessionStorage.token
+        let url = this.url.getUrl()+'/api/v1/pets?authentication_token='+token+'&all_pet=true';
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    /// Create Pet
+    CreatePet(data: any){
+        //this.route.navigate(['/ownerProfile']);
+       return this.http.post(this.url+'/api/v1/pets',data)
+       .pipe(
+        catchError(error => {
+            return observableThrowError(error)
+        }));  
+    }
 }
+
+
+
+
+

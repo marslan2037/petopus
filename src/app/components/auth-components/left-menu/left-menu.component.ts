@@ -14,11 +14,13 @@ export class LeftMenuComponent {
     userdata : [];
     role_id:any;
     nick_name:any;
+    company_name: any;
 
     constructor() {}
 
     ngOnInit() {
         this.nick_name = sessionStorage.getItem('full_name');
+        this.company_name = sessionStorage.company_name;
         this.role_id = sessionStorage.getItem('role_id');
     }
 }

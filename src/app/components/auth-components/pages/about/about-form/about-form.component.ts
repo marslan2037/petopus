@@ -69,7 +69,7 @@ export class AboutFormComponent {
             'postal': ['', Validators.required],
             'country': ['', Validators.required],
             'contact': ['', Validators.required],
-            'profession_tyoe': ['undefined', Validators.required],
+            'profession_type': ['undefined', Validators.required],
             'business_name': ['', Validators.required],
             'company_name': ['', Validators.required],
         })

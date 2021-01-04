@@ -39,6 +39,7 @@ import { FeedbackComponent } from './../pages/feedback/feedback.component';
 import { AboutFormComponent } from '../pages/about/about-form/about-form.component';
 import { PetFormComponent } from '../pages/pets/pet-form/pet-form.component';
 import { PetsComponent } from '../pages/pets/pet/pet.component';
+import { GroupFormComponent } from '../pages/groups/group-form/group-form.component';
 
 @NgModule({
     declarations: [
@@ -74,7 +75,8 @@ import { PetsComponent } from '../pages/pets/pet/pet.component';
         FeedbackComponent,
         AboutFormComponent,
         PetFormComponent,
-        PetsComponent
+        PetsComponent,
+        GroupFormComponent
     ],
     imports: [
         HomeRoutes,

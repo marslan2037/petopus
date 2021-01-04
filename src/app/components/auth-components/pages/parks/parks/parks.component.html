@@ -10,88 +10,60 @@
             </button>
         </ng-container>
     </div>
-</div>
-
-<div class="petpark">
-    <div class="heading">
-        Pet Parks
-
-        <div class="button hover-class" (click)="DisplayEventForm()">
-            <a><img src="assets/images/bell.png" /></a>
-            <span>Post Pet Parks</span>
-        </div>
-
-        <div class="search">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="city">
-                        City:
-                        <input type="search" placeholder="New Yourk" name="" />
+    <div class="petpark">
+    
+    
+        <div class="incity">Pet Park in New Yourk</div>
+    
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let park of parks">
+                <div class="about">
+                    <div *ngFor="let img of park.pictures">
+                        <img *ngIf="img.profile" [src]="url + img.url || 'assets/images/Ellipse 4.png'" />
                     </div>
-                </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="postal">
-                        Postal Code:
-                        <input type="search" placeholder="888989" name="" />
+    
+                    <img
+                        *ngIf="park.pictures == undefined"
+                        src="assets/images/Ellipse 4.png"
+                    />
+    
+                    <div class="row">
+                        <div class="text">{{ park.park_name }}</div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="map" style="display: none;">
-            <img src="assets/images/map.png" />
-        </div>
-    </div>
-
-    <div class="incity">Pet Park in New Yourk</div>
-
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-12" *ngFor="let park of parks">
-            <div class="about">
-                <div *ngFor="let img of park.pictures">
-                    <img *ngIf="img.profile" [src]="url + img.url || 'assets/images/Ellipse 4.png'" />
-                </div>
-
-                <img
-                    *ngIf="park.pictures == undefined"
-                    src="assets/images/Ellipse 4.png"
-                />
-
-                <div class="row">
-                    <div class="text">{{ park.park_name }}</div>
-                </div>
-
-                <div class="row">
-                    <div class="city">
-                        <div class="fa fa-map-marker star" aria-hidden="true"></div>
-                        <span> {{ park.park_location }}</span>
+    
+                    <div class="row">
+                        <div class="city">
+                            <div class="fa fa-map-marker star" aria-hidden="true"></div>
+                            <span> {{ park.park_location }}</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="distance">{{ park.park_phone }}</div>
-                    <div class="stars">
-                        <span class="fa fa-star star" aria-hidden="true"></span>
-                        <span class="fa fa-star star checked" aria-hidden="true"></span>
-                        <span class="fa fa-star star checked" aria-hidden="true"></span>
-                        <span class="fa fa-star star checked" aria-hidden="true"></span>
-                        <span class="fa fa-star star checked" aria-hidden="true"></span>
+    
+                    <div class="row">
+                        <div class="distance">{{ park.park_phone }}</div>
+                        <div class="stars">
+                            <span class="fa fa-star star" aria-hidden="true"></span>
+                            <span class="fa fa-star star checked" aria-hidden="true"></span>
+                            <span class="fa fa-star star checked" aria-hidden="true"></span>
+                            <span class="fa fa-star star checked" aria-hidden="true"></span>
+                            <span class="fa fa-star star checked" aria-hidden="true"></span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="images">
-                        <img src="assets/images/Rectangle 9 copy 4.png" />
+    
+                    <div class="row">
+                        <div class="images">
+                            <img src="assets/images/Rectangle 9 copy 4.png" />
+                        </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="button1"><a href="#">Park Details</a></div>
+    
+                    <div class="row">
+                        <div class="button1"><a href="#">Park Details</a></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 

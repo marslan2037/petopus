@@ -11327,3 +11327,25 @@ padding-left: 0px;
 /* label{margin-left: 20px;}
 .datepicker{width:180px; margin: 0 20px 20px 20px;}
 .datepicker > span:hover{cursor: pointer;} */
+groups.ng-star-inserted {
+    background: white;
+}
+.profile .posts .cards .groups{
+    background: white;
+    padding-right: 10px !important;
+}
+.profile .posts .cards .groups .dropdown button.custom-button {
+    padding: 0 10px;
+    text-align: center;
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    background: #ef5445;
+    color: #fff;
+    height: 30px;
+    outline: none;
+}
+.location button.custom-button {
+    margin-top: 5px !important;
+    height: auto !important;
+}

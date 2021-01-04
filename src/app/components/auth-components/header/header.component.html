@@ -82,10 +82,16 @@
                 </div>
 
                 <div class="friends" *ngIf="role_id == '2'">
-                    <ul>
-                        <li><img src="assets/images/1_03.png" class="profile-img"><img class="status" src="assets/images/online_02.png"></li>
-                        <li><img src="assets/images/1_03.png" class="profile-img"><img class="status" src="assets/images/offline_02.png"></li>
-                        <li class="add"><a href=""><i class="fas fa-plus"></i></a></li>
+                    <ul *ngFor="let pet of userdata; let i = index">
+
+                        <li (click)="ActivePet(pet.id)" *ngIf="pet.profile_picture">
+                            <img   [src]="url +pet.profile_picture || 'assets/images/1_03.png'"  class="profile-img"><img class="status" src="assets/images/online_02.png"> 
+                        </li>
+                        <li (click)="ActivePet(pet.id)" *ngIf="pet.profile_picture == null">
+                            <img  src="assets/images/1_03.png"  class="profile-img"><img class="status" src="assets/images/online_02.png"> 
+                        </li>
+
+                        <li class="add" *ngIf="userdata.length < 5 && i == userdata.length-1"><a href=""><i class="fas fa-plus"></i></a></li>
                     </ul>
                 </div>
             </div>

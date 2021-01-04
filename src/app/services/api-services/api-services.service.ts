@@ -1,7 +1,7 @@
 import { catchError } from 'rxjs/internal/operators/catchError';
 import {throwError as observableThrowError, Observable} from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class ApiServicesService {
@@ -307,7 +307,7 @@ export class ApiServicesService {
     GetAllPets()
     {
         let token = sessionStorage.token
-        let url = this.url.getUrl()+'/api/v1/pets?authentication_token='+token+'&all_pet=true';
+        let url = this.url+'/api/v1/pets?authentication_token='+token+'&all_pet=true';
         return this.http.get(url).pipe(
             catchError(error => {
                 return observableThrowError(error);
@@ -323,6 +323,185 @@ export class ApiServicesService {
             return observableThrowError(error)
         }));  
     }
+/*************************************************************************************/    
+/****************************** PETS ACTIVITES CALL *************************************/    
+/*************************************************************************************/
+    CreateActivity(data: any)
+    {
+        
+        let url = this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/activity_create';
+        return this.http.post(url, data)
+        .pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    GetActivites(pet_id: any)
+    {
+        //let pet_id = 23;
+        let token = sessionStorage.token;
+        let url = this.url+'/api/v1/pets/'+pet_id+'/activities?authentication_token='+token;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    UpdateActivity(data: any){
+        let url = this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/activities/'+data.activity_id;
+        return this.http.patch(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    UpdateFriends(data: any){
+        let url = this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/activities/'+data.activity_id;
+        return this.http.patch(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    DeleteActivity(data: any){
+        let token = sessionStorage.token;
+        let url = this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/activities/'+data.activities_id+'?authentication_token='+token;
+        return this.http.delete(url, data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+    }
+    GetSingleActivit(data: any){
+        let token = sessionStorage.token
+        let url = this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/activities/'+data.activities_id+'?authentication_token='+token;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+    }
+    
+    GetAllActivitesPets()
+    {
+        let token = sessionStorage.token
+        let url = this.url+'/api/v1/associated_activities?authentication_token='+token+'&is_pet=true';
+        console.log(url);
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            }));
+    }
+    GetAllActivitesProfessional()
+    {
+        let token = sessionStorage.token;
+        let url = this.url+'/api/v1/associated_activities?authentication_token='+token+'&is_professional=true';
+        console.log(url);
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            }));
+    }
+/*************************************************************************************/    
+/****************************** PETS FRIENDS CALL *************************************/    
+/*************************************************************************************/
+
+
+    GETAllPets()
+    {
+        let token = sessionStorage.token;
+        let url = this.url+'/api/v1/pets?authentication_token='+token+'&all_pet=true';
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    SendRequest(data: any)
+    {
+        let url = this.url+'/api/v1/friend_requests';
+        return this.http.post(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    GetPandingRequests(data:any)
+    {
+        let url = this.url+'/api/v1/friend_requests?pet_id='+data.id+'&authentication_token='+data.token+'&pending_request=true';
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+    }
+    GetFriends(data:any)
+    {
+        let url = this.url+'/api/v1/friends?pet_id='+data.id+'&authentication_token='+data.token;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            }));
+    }
+    AcceptSelectedFriends(data: any)
+    {
+        
+        let url = this.url+'/api/v1/friend_requests/'+data.request_id;
+        return this.http.put(url,data).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+    }
+    GetSendFriendRequest(data:any)
+    {
+        let url = this.url+'/api/v1/friend_requests?pet_id='+data.id+'&authentication_token='+data.token;
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            })); 
+
+    }
+    DeleteFriend(data: any){
+        ///api/v1/friends/:id
+        let url = this.url+'/api/v1/friends/'+data.friend_id+'?pet_id='+data.pet_id+'&authentication_token='+data.authentication_token+'&friend_id='+data.friend_id;
+        return this.http.delete(url).pipe(
+            catchError(error => {
+                return observableThrowError(error);
+            }));
+    }
+
+/*************************************************************************************/    
+/****************************** PETS ALBUMS CALL *************************************/    
+/*************************************************************************************/
+
+
+
+    GetPETSAlbums(pet_id, token)
+    {
+        let url = this.url+'/api/v1/pets/'+pet_id+'/albums?authentication_token='+token;
+        
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authentication_token', 'Bearer ${token}');
+        const requestHeaders = new HttpHeaders().set('Content-type','application/json').append('authentication_token', 'Bearer ${token}');
+        
+        return this.http.get(url).pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            })); 
+       
+    }
+    CreateAlbum(data: any)
+    {
+        return this.http.post(this.url+'/api/v1/pets/'+sessionStorage.pet_id+'/album_create',data)
+        .pipe(
+            catchError(error => {
+                return observableThrowError(error)
+            }));  
+    }
+/*************************************************************************************/    
+/****************************** NEARBY API CALL *************************************/    
+/*************************************************************************************/
+
+
 }
 
 

@@ -22,6 +22,9 @@ import { ApiServicesService } from './services/api-services/api-services.service
 import { AuthService } from './services/auth-services/auth-services.service';
 import { LoginService } from './components/local-components/login/login.service';
 import { ComponentsCommunicationService } from './services/component-communications/components-communication.service';
+import { ComponentObservable } from './services/compnent-observable/compnent-observable.service';
+import { AgmCoreModule } from '@agm/core';
+import { GeocodeService } from './services/google-maps-services/google-maps-service';
 
 @NgModule({
     declarations: [
@@ -40,8 +43,15 @@ import { ComponentsCommunicationService } from './services/component-communicati
         ReactiveFormsModule,
         NgxLoadingModule.forRoot({}),
         ToastrModule.forRoot(),
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyBojNd0pQ-_0Or0zSIXtrOOIhUadDcbEZI',
+            libraries: ["geometry","places"],
+            
+        }),
+
+        
     ],
-    providers: [LoginService, ApiServicesService, AuthService, ComponentsCommunicationService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
+    providers: [LoginService, ApiServicesService, AuthService, ComponentsCommunicationService, ComponentObservable, GeocodeService, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

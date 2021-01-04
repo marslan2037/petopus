@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApiServicesService } from 'src/app/services/api-services/api-services.service';
 import { Router } from '@angular/router';
+import { ComponentObservable } from 'src/app/services/compnent-observable/compnent-observable.service';
 
 @Component({
     selector: 'album-form',
@@ -24,20 +25,33 @@ export class AlbumFormComponent {
         {id: 2, name: 'Training', value: 'training'},
         {id: 2, name: 'Other', value: 'other'},
     ];
+    role_id: any;
+    pet_id: any;
 
  
     constructor(
         private formBuilder: FormBuilder,
         private toastr: ToastrService, 
         private apiServicesService: ApiServicesService,
-        private router: Router
+        private router: Router,
+        private componentObservable: ComponentObservable
         
         ) {}
         
 
     ngOnInit() {
         this.CreateForm();
+        this.role_id = sessionStorage.role_id;
         //this.FormValueChanges();
+        if(this.role_id  == "2"){
+            this.pet_id = sessionStorage.pet_id;
+            this.componentObservable.getIdClicked.subscribe((value)=>{
+                this.role_id = value;
+                //this.GetAllAlbums();
+            })
+
+
+        }
     }
     
     CreateForm() {
@@ -76,31 +90,65 @@ export class AlbumFormComponent {
                 }
            
             };
-            this.apiServicesService.CreateAlbumsProfessional(albun_data).subscribe((response:any) => {
-                console.log(response)
-                this.loading = false;
-                this.ResetForm();
-                this.toastr.success('Album is Created Successfully', "Success");
-                let album_id = response['data']['id']
-                
-                if(album_id) {
-                    if(this.imagesArraylist.length > 0) {
-                        this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Album', album_id, token, true, false).subscribe((response:any) => {
-                            console.log(response);
+            if(this.role_id == "2"){
+
+                this.apiServicesService.CreateAlbum(albun_data).subscribe((response:any) => {
+                    console.log(response)
+                    this.loading = false;
+                    this.ResetForm();
+                    this.toastr.success('Album is Created Successfully', "Success");
+                    let album_id = response['data']['id']
+                    
+                    if(album_id) {
+                        if(this.imagesArraylist.length > 0) {
+                            this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Album', album_id, token, true, false).subscribe((response:any) => {
+                                console.log(response);
+                                this.router.navigate(['/home/album']);
+                            }, error => {
+                                console.log(error)
+                            })
+                        }
+                        else{
                             this.router.navigate(['/home/album']);
-                        }, error => {
-                            console.log(error)
-                        })
+                        }
                     }
-                    else{
-                        this.router.navigate(['/home/album']);
+                }, error => {
+                    this.loading = false;
+                    this.toastr.error(error, "Error");
+                    console.log(error);
+                });
+
+            }
+            else{
+
+                this.apiServicesService.CreateAlbumsProfessional(albun_data).subscribe((response:any) => {
+                    console.log(response)
+                    this.loading = false;
+                    this.ResetForm();
+                    this.toastr.success('Album is Created Successfully', "Success");
+                    let album_id = response['data']['id']
+                    
+                    if(album_id) {
+                        if(this.imagesArraylist.length > 0) {
+                            this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Album', album_id, token, true, false).subscribe((response:any) => {
+                                console.log(response);
+                                this.router.navigate(['/home/album']);
+                            }, error => {
+                                console.log(error)
+                            })
+                        }
+                        else{
+                            this.router.navigate(['/home/album']);
+                        }
                     }
-                }
-            }, error => {
-                this.loading = false;
-                this.toastr.error(error, "Error");
-                console.log(error);
-            });
+                }, error => {
+                    this.loading = false;
+                    this.toastr.error(error, "Error");
+                    console.log(error);
+                });
+
+            }
+            
 
         
 

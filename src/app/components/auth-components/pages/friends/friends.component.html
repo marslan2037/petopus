@@ -1,5 +1,5 @@
 <div class="middle-page">
-    <p class="custom-heading">Friend Requests</p>
+    <p class="custom-heading">Friends</p>
 
     <div class="friend-requests">
         <div class="single-friend-request">
@@ -101,5 +101,96 @@
 
             <button class="custom-button">View Profile</button>
         </div>
+    </div>
+    <p class="custom-heading" *ngIf="friendRequests.length > 0">Friend Requests</p>
+
+    <div class="friend-requests" *ngIf="friendRequests.length > 0">
+        <div class="single-friend-request" *ngFor="let pet of friendRequests">
+            <img [src]="pet.photo || 'assets/images/Clip1.png'" alt="" />
+            
+            <div class="about-user">
+                <p class="name">{{pet.name}}</p>
+                <p class="a-heading">Pets:<span class="a-answer"> {{pet.type}}</span></p>
+                <p class="a-answer">11 km</p>
+                <p class="a-heading">Breed:<span class="a-answer"> {{pet.breed}}</span></p>
+            </div>
+
+            <div class="location">
+                <p class="a-answer"><i class="fa fa-map-marker"></i> {{pet.city}}</p>
+                <ul class="review-stars">
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                </ul>
+                
+                <p class="a-heading">Size:<span class="a-answer"> {{pet.size}}</span></p>
+            </div>
+            <div class="location">
+                <button class="custom-button" (click)="CancelRequest(pet.id)">Request Already Sent</button>
+                <button class="custom-button" (click)="ViewProfile(pet.id)">View Profile</button>
+            </div>
+        </div>
+        
+    </div>
+    <p class="custom-heading">Pets You May Know</p>
+
+    <div class="friend-requests">
+        <div class="single-friend-request" *ngFor="let pet of sendingFriendRequests">
+            <img [src]="pet.photo || 'assets/images/Clip1.png'" alt="" />
+            
+            <div class="about-user">
+                <p class="name">{{pet.name}}</p>
+                <p class="a-heading">Pets:<span class="a-answer"> {{pet.type}}</span></p>
+                <p class="a-answer">11 km</p>
+                <p class="a-heading">Breed:<span class="a-answer"> {{pet.breed}}</span></p>
+            </div>
+
+            <div class="location">
+                <p class="a-answer"><i class="fa fa-map-marker"></i> {{pet.city}}</p>
+                <ul class="review-stars">
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                </ul>
+                
+                <p class="a-heading">Size:<span class="a-answer"> {{pet.size}}</span></p>
+            </div>
+            <div class="location">
+                <button class="custom-button" (click)="CancelRequest(pet.id)">Request Already Sent</button>
+                <button class="custom-button" (click)="ViewProfile(pet.id)">View Profile</button>
+            </div>
+        </div>
+        <div class="single-friend-request" *ngFor="let pet of petsData">
+            <img [src]="pet.photo || 'assets/images/Clip1.png'" alt="" />
+            
+            <div class="about-user">
+                <p class="name">{{pet.name}}</p>
+                <p class="a-heading">Pets:<span class="a-answer"> {{pet.type}}</span></p>
+                <p class="a-answer">11 km</p>
+                <p class="a-heading">Breed:<span class="a-answer"> {{pet.breed}}</span></p>
+            </div>
+
+            <div class="location">
+                <p class="a-answer"><i class="fa fa-map-marker"></i> {{pet.city}}</p>
+                <ul class="review-stars">
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                </ul>
+                
+                <p class="a-heading">Size:<span class="a-answer"> {{pet.size}}</span></p>
+            </div>
+            <div class="location">
+                <button class="custom-button" (click)="AddFriend(pet.id)">Add Friend</button>
+                <button class="custom-button" (click)="ViewProfile(pet.id)">View Profile</button>
+            </div>
+        </div>
+
     </div>
 </div>

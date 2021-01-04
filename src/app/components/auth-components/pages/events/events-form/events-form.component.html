@@ -1,7 +1,11 @@
 <div class="rounded bg-white p-3 mb-2 custom-form-body">
     <ngx-loading [show]="loading"></ngx-loading>
-    <h5 class="border-bottom pb-2 mb-4">
+    <h5 class="border-bottom pb-2 mb-4" *ngIf="role_id == '1'">
         Create Event
+    </h5>
+    <h5 class="border-bottom pb-2 mb-4" *ngIf="role_id == '2'">
+        Pet Activities
+        
     </h5>
 
     <form class="custom-form" [formGroup]="form" (ngSubmit)="SubmitData()">

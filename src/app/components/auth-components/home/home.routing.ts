@@ -30,6 +30,7 @@ import { PetsComponent } from './../pages/pets/pet/pet.component';
 import { PetFormComponent } from './../pages/pets/pet-form/pet-form.component';
 import { AuthService } from './../../../services/auth-services/auth-services.service';
 import { AboutFormComponent } from '../pages/about/about-form/about-form.component';
+import { GroupFormComponent } from '../pages/groups/group-form/group-form.component';
 
 const routes: Routes = [
 
@@ -70,7 +71,11 @@ const routes: Routes = [
             { path: 'friends', component: FriendsComponent, canActivate: [AuthService] },
             { path: 'chat', component: ChatComponent, canActivate: [AuthService] },
             { path: 'admin-chat', component: ChatComponent, canActivate: [AuthService] },
+            
             { path: 'groups', component: GroupsComponent, canActivate: [AuthService] },
+            { path: 'groups/create', component: GroupFormComponent, canActivate: [AuthService] },
+            
+            
             { path: 'appointments', component: AppointmentsComponent, canActivate: [AuthService] },
 
             { path: 'breeders', component: BreedersComponent, canActivate: [AuthService] },

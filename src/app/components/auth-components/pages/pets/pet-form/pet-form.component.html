@@ -12,7 +12,7 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-12 col-sm-12">
                      <label for="exampleInputPassword1">Pet Type</label>
-                     <select class="form-control" id="exampleFormControlSelect1" formControlName="status" [ngClass]="{'is-invalid': submitted && form.controls.status.value == 'undefined'}">
+                     <select class="form-control" id="exampleFormControlSelect1" formControlName="type" [ngClass]="{'is-invalid': submitted && form.controls.type.value == 'undefined'}">
                         <option [value]="undefined">Select Value</option>
                         <option *ngFor="let status of pet_type" [value]="status.value">{{status.name}}</option>
                                        
@@ -47,7 +47,7 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-12 col-sm-12">
                      <label for="exampleInputPassword1">Breed</label>
-                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="breed" placeholder="breed" [ngClass]="{'is-invalid': submitted && form.controls.breed.errors}"> 
+                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="breeds"  [ngClass]="{'is-invalid': submitted && form.controls.breed.errors}"> 
                      <div *ngIf="submitted && form.controls.breed.errors" class="invalid-feedback">Breed is required</div>
                   </div>
                   <!-- <div class="form-group col-lg-6 col-md-12 col-sm-12">
@@ -61,62 +61,56 @@
                      <div *ngIf="submitted && form.controls.2ndbreed.errors" class="invalid-feedback">Breed is required</div>
                   </div> -->
                </div>
+               
                <div class=" form-group ">
-                  <input type="checkbox" name="fancy-checkbox-default" formControlName="purebreed" value="purebreed" id="fancy-checkbox-default" autocomplete="off" />
-                  <div class=" btn-group ">
-                      <label for="fancy-checkbox-default" class=" btn btn-default ">
-                          <span class=" glyphicon glyphicon-ok "></span>
-                          <span> </span>
-                      </label>
-                      <label for="fancy-checkbox-default" class=" btn btn-default active ">
-                        Purebreed
-                      </label>
+                  <div class="custom-control custom-checkbox">
+                     <input type="checkbox" formControlName="mixedbreed" value="mixedbreed" class="custom-control-input" id="customCheck1">
+                     <label class="custom-control-label" for="customCheck1">Mixbreed</label>
                   </div>
-              </div>
-              <div class=" form-group ">
-                  <input type="checkbox" name="fancy-checkbox-default" id="fancy-checkbox-default" formControlName="mixedbreed" value="mixedbreed" autocomplete="off" />
-                  <div class=" btn-group ">
-                     <label for="fancy-checkbox-defaults" class=" btn btn-default ">
-                        <span class=" glyphicon glyphicon-ok "></span>
-                        <span> </span>
-                     </label>
-                     <label for="fancy-checkbox-defaults" class=" btn btn-default active ">
-                        Mixbreed
-                     </label>
+               </div>
+               <div class=" form-group ">
+                  <div class="custom-control custom-checkbox">
+                     <input type="checkbox" formControlName="purebreed" value="purebreed" class="custom-control-input" id="customCheck2">
+                     <label class="custom-control-label" for="customCheck2">Purebreed</label>
                   </div>
+               </div>
+               <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" name="is_intact" formControlName="is_intact" value="intact" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline1">Intact</label>
+               </div>
+               <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" value="spayed" name="is_intact" formControlName="is_intact" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadioInline2">Spayed/neutered</label>
+               </div>
+               <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label for="exampleInputPassword1">1st Breed</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="breed1"  [ngClass]="{'is-invalid': submitted && form.controls.breed1.errors}"> 
+                  <div *ngIf="submitted && form.controls.breed1.errors" class="invalid-feedback">1st Breed is required</div>
+               </div>
+               <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label for="exampleInputPassword1">2nd Breed</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder=""required formControlName="breed2"  [ngClass]="{'is-invalid': submitted && form.controls.breed2.errors}"> 
+                  <div *ngIf="submitted && form.controls.breed2.errors" class="invalid-feedback">2nd Breed is required</div>
                </div>
               
-
-               <div class="form-group">
-                  <div class="checkbox">
-                    <label class="radio-inline">
-                      <input type="radio" style="display: block;" name="is_intact" formControlName="is_intact" value="intact"  >
-                      <span class="radio-material"><span class="check"></span></span>
-                      Intact
-                    </label>
-                   
-                    <label class="radio-inline" style="margin-left:30px">
-                        <input type="radio" value="spayed" name="is_intact" formControlName="is_intact" style="display: block;"  >
-                        <span class="radio-material"><span class="check"></span></span>
-                        Spayed/neutered
-                    </label>
-
-                  </div>
-               </div>
-                
-          
                <div class="form-group">
                   <label for="exampleInputPassword1"> Add Profile Image:</label>
                   <div class="image-upload">
                      <div class="row">
-                        <div class="col-lg-2 col-md-2 col-sm-3">
+                        <div class="col-lg-2 col-md-2 col-sm-3" [ngClass]="{'is-invalid': submitted && form.controls.pet_avator.errors}">
                            <label for="file-input">
-                           <img src="/images/createanouncement/Upload.png">
+                              <img src="assets/images/createanouncement/Upload.png">
+                              <input type="file" class="form-control" 
+                              name="pet_avator"
+                              formControlName="pet_avator"
+                              (change)="onFileChange($event)"
+                              >
                            </label>
                         </div>
                         <div class="col-lg-10 col-md-10 col-sm-9">
                            <div class="text"> Upload Profile Image Here</div>
                         </div>
+                        <div *ngIf="submitted && form.controls.pet_avator.errors" class="invalid-feedback">Pet Image is required</div>
                      </div>
                   </div>
                </div>

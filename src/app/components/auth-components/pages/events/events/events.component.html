@@ -1,12 +1,19 @@
 <div class="middle-page">
     <ngx-loading [show]="loading"></ngx-loading>
     <div class="m-heading grid-col-2">
-        <h5>Events</h5>
+        <h5 *ngIf="role_id == '1'">Events</h5>
+        <h5 *ngIf="role_id == '2'">Pet Activities</h5>
 
         <ng-container *ngIf="role_id == '1'">
             <button class="custom-button button hover-class" (click)="DisplayEventForm()">
                 <img src="assets/images/plus1.png" alt="" />
                 Create Event
+            </button>
+        </ng-container>
+        <ng-container *ngIf="role_id == '2'">
+            <button class="custom-button button hover-class" (click)="DisplayEventForm()">
+                <img src="assets/images/plus1.png" alt="" />
+                Create Activity
             </button>
         </ng-container>
     </div>

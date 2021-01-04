@@ -88,8 +88,8 @@ export class LoginComponent {
                 if(response["role"] == "Owner") {
                     
                     this.loginService.GetPets().subscribe((response)=>{
-                        
-                        if(response['pets'].length == 0) return this.router.navigate(['/home/pets/create']);
+                        sessionStorage.setItem("pets", JSON.stringify(response["pets"]));
+                        if(response['pets'].length == 0)  return this.router.navigate(['/home/pets/create']);
                         this.router.navigateByUrl(this.returnUrl);
 
                     }, (error)=>{

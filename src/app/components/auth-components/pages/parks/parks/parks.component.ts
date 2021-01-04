@@ -30,7 +30,7 @@ export class ParksComponent {
 
     ngOnInit() {
         this.role_id = sessionStorage.getItem('role_id');
-
+        
         this.GetAllParks();
     }
 

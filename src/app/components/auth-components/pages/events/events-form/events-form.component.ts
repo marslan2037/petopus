@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApiServicesService } from './../../../../../services/api-services/api-services.service';
+import { ComponentObservable } from 'src/app/services/compnent-observable/compnent-observable.service';
 
 @Component({
     selector: 'events-form',
@@ -16,6 +17,8 @@ export class EventsFormComponent {
     loading:boolean = false;
     submitted:boolean = false;
     creating_service:boolean = false;
+    role_id: any;
+    pet_id: any;
     event_status_list:any = [
         {id: 1, name: 'Private Event', value: 'private_event'},
         {id: 2, name: 'Public Event', value: 'public_event'},
@@ -24,10 +27,22 @@ export class EventsFormComponent {
     constructor(
             private formBuilder: FormBuilder,
             private toastr: ToastrService, 
-            private apiServicesService: ApiServicesService
+            private apiServicesService: ApiServicesService,
+            private componenetObservale : ComponentObservable
         ) {}
 
     ngOnInit() {
+        this.role_id = sessionStorage.role_id;
+        if(this.role_id == "2"){
+
+            this.pet_id = sessionStorage.pet_id;
+
+            this.componenetObservale.getIdClicked.subscribe((value)=>{
+                this.pet_id = value;
+            })
+
+        }
+        
         this.CreateForm();
         this.FormValueChanges();
     }
@@ -88,25 +103,55 @@ export class EventsFormComponent {
             console.log(data)
             console.log(event_data)
 
-            this.apiServicesService.CreateProfessionalEvent(event_data).subscribe((response:any) => {
-                console.log(response)
-                this.loading = false;
-                this.ResetForm();
-                this.toastr.success('Event is Created Successfully', "Success");
+            if(this.role_id == 2){
 
-                if(response['activity_id']) {
-                    if(this.imagesArraylist.length > 0) {
-                        this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Activity', response['activity_id'], token, true, false).subscribe((response:any) => {
-                            console.log(response);
-                        }, error => {
-                            console.log(error)
-                        })
+
+                this.apiServicesService.CreateActivity(event_data).subscribe((response:any) => {
+                    console.log(response)
+                    this.loading = false;
+                    this.ResetForm();
+                    this.toastr.success('Event is Created Successfully', "Success");
+
+                    if(response['activity_id']) {
+                        if(this.imagesArraylist.length > 0) {
+                            this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Activity', response['activity_id'], token, true, false).subscribe((response:any) => {
+                                console.log(response);
+                            }, error => {
+                                console.log(error)
+                            })
+                        }
                     }
-                }
-            }, error => {
-                this.loading = false;
-                console.log(error);
-            });
+                }, error => {
+                    this.loading = false;
+                    console.log(error);
+                });
+
+            }
+            else{
+
+
+                this.apiServicesService.CreateProfessionalEvent(event_data).subscribe((response:any) => {
+                    console.log(response)
+                    this.loading = false;
+                    this.ResetForm();
+                    this.toastr.success('Event is Created Successfully', "Success");
+
+                    if(response['activity_id']) {
+                        if(this.imagesArraylist.length > 0) {
+                            this.apiServicesService.UploadFile(this.imagesArraylist[0], 'Activity', response['activity_id'], token, true, false).subscribe((response:any) => {
+                                console.log(response);
+                            }, error => {
+                                console.log(error)
+                            })
+                        }
+                    }
+                }, error => {
+                    this.loading = false;
+                    console.log(error);
+                });
+
+            }
+
         }
     }
 

@@ -1,21 +1,9 @@
-<div class="middle-page">
-    <div class="m-heading grid-col-2">
-        <h5>Announcements</h5>
-
-        <ng-container *ngIf="role_id == '1'">
-            <button class="custom-button button hover-class" (click)="DisplayAnnouncementForm()">
-                <img src="assets/images/plus1.png" alt="" />
-                Create Announcment
-            </button>
-        </ng-container>
-    </div>
-</div>
 
 <div class="petAnnounces">
     <div class="heading">
         Announcements 
 
-        <div class="button hover-class" (click)="DisplayAnnouncementForm()">
+        <div *ngIf="role_id == 1" class="button hover-class" (click)="DisplayAnnouncementForm()">
             <a><img src="assets/images/plus1.png"></a>
             <span>Create Announcment</span>
         </div>

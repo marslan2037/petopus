@@ -11349,3 +11349,157 @@ groups.ng-star-inserted {
     margin-top: 5px !important;
     height: auto !important;
 }
+
+
+
+.profile .header .friends .profile-img{
+width: 11%;
+}
+/*.profile .header .my-profile .profile-img {
+width: 47px !important;
+}*/
+img.profile-img {
+border-radius: 70% !important;
+}
+@media screen and (min-width: 1200px){
+.profile .header .my-profile ul li span {
+margin-left: 8px !important;
+}
+form.ng-untouched.ng-pristine.ng-valid {
+margin-top: -51px !important;
+}
+}
+@media screen and (max-width: 1199px){
+.col-lg-4.col-md-5.col-sm-5.col-3.potrait-padding .logo { 
+margin-left: -60px !important; } 
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width .setting {
+margin-left: -48px; 
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+position: absolute;
+margin-left: 60%;
+}
+.col-lg-4.col-md-1.col-sm-1.col-1 {
+max-width: 100%;
+position: absolute;
+margin-left: 24%;
+}
+.profile .header .friends .profile-img {
+width: 4%;
+}
+}
+@media screen and (max-width: 1025px){
+.col-lg-4.col-md-5.col-sm-5.col-3.potrait-padding .logo {
+margin-left: 0px !important;
+}
+.profile .header .my-profile ul li {
+margin-right: 22px;
+}
+}
+@media screen and (max-width: 991px){
+.col-lg-4.col-md-1.col-sm-1.col-1 {
+position: absolute;
+margin-left: 20%;
+max-width: 37%;
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+position: absolute;
+margin-left: 57%;
+max-width: 100%;
+}
+.col-lg-4.col-md-5.col-sm-5.col-3.potrait-padding .logo {
+margin-left: -89px !important;
+}
+.profile .header .my-profile ul li {
+margin-right: 22px;
+}
+.profile .header .friends .profile-img {
+width: 11%;
+}
+}
+@media screen and (max-width: 854px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width .setting{
+margin-left: -73px;
+}
+.col-lg-4.col-md-1.col-sm-1.col-1 {
+display: none;
+}
+.profile .header .my-profile ul li {
+margin-right: 22px;
+}
+}
+@media screen and (max-width: 824px){
+.col-lg-4.col-md-5.col-sm-5.col-3.potrait-padding .logo {
+margin-left: 0px !important; 
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width .setting {
+margin-left: -60%;
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 37%;
+margin-left: 56%;
+}
+.profile .header .nav-bar {
+display: block;
+float: none;
+padding-top: 0px;
+}
+}
+@media screen and (max-width: 767px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 44%;
+margin-left: 47%;
+}
+}
+@media screen and (max-width: 736px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 44%;
+margin-left: 57%;
+}
+}
+@media screen and (max-width: 658px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 49%;
+margin-left: 47%;
+}
+}
+@media screen and (max-width: 567px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 100%;
+margin-left: 40%;
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width .setting {
+margin-left: -17%;
+}
+.profile .header .my-profile .profile-img {
+z-index: 0;
+position: absolute;
+width: 46px;
+border-radius: 50%;
+}
+}
+@media screen and (max-width: 534px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 100%;
+margin-left: 29%;
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width .my-profile ul li span {
+display: none;
+}
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 100%;
+margin-left: 45%;
+}
+}
+@media screen and (max-width: 412px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 100%;
+margin-left: 34%;
+}
+}
+@media screen and (max-width: 350px){
+.col-lg-4.col-md-6.col-sm-6.col-8.mobile-width {
+max-width: 88%;
+margin-left: 25%;
+}
+}
